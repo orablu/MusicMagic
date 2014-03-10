@@ -112,6 +112,7 @@
     </Compile>
     <Compile Include="Note.cs" />
     <Compile Include="INoteSource.cs" />
+    <Compile Include="NoteSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -10,28 +10,31 @@ using Windows.Storage;
 
 namespace MusicMagic {
     class Note : INote {
-        public List<INoteSource> Sources {
-            get;
-            set;
+        private INoteSource source;
+
+        public Note() {
+            source = null;
+            _pitch = -1;
+        }
+
+        private INoteStream _stream;
+        public INoteStream Stream {
+            get {
+                return _stream;
+            }
+            set {
+                _stream = value;
+                if (Pitch >= 0) {
+                    setNoteSource();
+                }
+            }
         }
 
         public XAudio2 Device { get; set; }
 
-        public long Start {
-            get;
-            set;
-        }
+        public long Start { get; set; }
 
-        private int _length;
-        public int Length {
-            get {
-                return _length;
-            }
-            set {
-                _length = value;
-                destroySourceVoice();
-            }
-        }
+        public int Length { get; set; }
 
         private int _pitch;
         public int Pitch {
@@ -40,46 +43,28 @@ namespace MusicMagic {
             }
             set {
                 _pitch = value;
-                destroySourceVoice();
-            }
-        }
-
-
-        private SourceVoice _sourceVoice;
-        private AudioBuffer _buffer;
-        public SourceVoice SourceVoice {
-            get {
-                if (_sourceVoice == null) {
-                    _sourceVoice = CreateSourceVoiceFromSource(Sources[Pitch]);
+                if (Stream != null) {
+                    setNoteSource();
                 }
-                return _sourceVoice;
             }
         }
 
-        private SourceVoice CreateSourceVoiceFromSource(INoteSource source) {
-            var localStorage = ApplicationData.Current.LocalFolder;
-            var file = localStorage.OpenStreamForReadAsync(source.Path).Result;
-            var stream = new SoundStream(file);
-            var format = stream.Format;
-            _buffer = new AudioBuffer {
-                Stream = stream.ToDataStream(),
-                AudioBytes = (int)stream.Length,
-                Flags = BufferFlags.EndOfStream,
-                LoopBegin = source.LoopBegin,
-                LoopLength = source.LoopLength,
-                LoopCount = Length
-            };
-            stream.Dispose();
-            return new SourceVoice(Device, format, true);
+        public void Play() {
+            var voice = source.Voice;
+            var buffer = source.GetAudioBuffer(Length);
+            voice.SubmitSourceBuffer(
+                source.GetAudioBuffer(Length),
+                source.PacketsInfo);
         }
 
-        private void destroySourceVoice() {
-            if (_sourceVoice != null) {
-                _sourceVoice.DestroyVoice();
-                _buffer.Stream.Dispose();
-                _sourceVoice.Dispose();
+        private void setNoteSource() {
+            if (Stream == null) {
+                throw new NullReferenceException("Parent stream not set.");
             }
-            _sourceVoice = null;
+            if (Pitch < 0 || Pitch >= Stream.Sources.Count) {
+                throw new IndexOutOfRangeException("Pitch is out of range of sources.");
+            }
+            source = Stream.Sources[Pitch];
         }
     }
 }
