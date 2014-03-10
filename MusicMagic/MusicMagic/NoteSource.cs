@@ -165,7 +165,7 @@ namespace MusicMagic {
             if (Format == null) {
                 setDataStream();
             }
-            Voice = new SourceVoice(Device, Format);
+            Voice = new SourceVoice(Device, Format, true);
         }
 
         /// <summary>
