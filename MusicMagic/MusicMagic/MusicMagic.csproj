@@ -113,6 +113,9 @@
     <Compile Include="Note.cs" />
     <Compile Include="INoteSource.cs" />
     <Compile Include="NoteSource.cs" />
+    <Compile Include="PianoPage.xaml.cs">
+      <DependentUpon>PianoPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +165,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PianoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
