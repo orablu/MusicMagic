@@ -17,13 +17,13 @@ namespace MusicMagic {
             _pitch = -1;
         }
 
-        private INoteStream _stream;
-        public INoteStream Stream {
+        private INoteStream _parent;
+        public INoteStream Parent {
             get {
-                return _stream;
+                return _parent;
             }
             set {
-                _stream = value;
+                _parent = value;
                 if (Pitch >= 0) {
                     setNoteSource();
                 }
@@ -32,7 +32,7 @@ namespace MusicMagic {
 
         public XAudio2 Device { get; set; }
 
-        public long Start { get; set; }
+        public int Start { get; set; }
 
         public int Length { get; set; }
 
@@ -43,7 +43,7 @@ namespace MusicMagic {
             }
             set {
                 _pitch = value;
-                if (Stream != null) {
+                if (Parent != null) {
                     setNoteSource();
                 }
             }
@@ -58,13 +58,13 @@ namespace MusicMagic {
         }
 
         private void setNoteSource() {
-            if (Stream == null) {
+            if (Parent == null) {
                 throw new NullReferenceException("Parent stream not set.");
             }
-            if (Pitch < 0 || Pitch >= Stream.Sources.Count) {
+            if (Pitch < 0 || Pitch >= Parent.Sources.Count) {
                 throw new IndexOutOfRangeException("Pitch is out of range of sources.");
             }
-            source = Stream.Sources[Pitch];
+            source = Parent.Sources[Pitch];
         }
     }
 }

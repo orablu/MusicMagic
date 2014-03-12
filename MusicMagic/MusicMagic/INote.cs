@@ -8,11 +8,10 @@ using SharpDX.Multimedia;
 
 namespace MusicMagic {
     interface INote {
-        INoteStream Stream { get; set; }
-        double Start { get; set; }
-        double Length { get; set; }
+        INoteStream Parent { get; set; }
+        int Start { get; set; }
+        int Length { get; set; }
         int Pitch { get; set; }
-        SoundStream Stream { get; }
         void Play();
     }
 }

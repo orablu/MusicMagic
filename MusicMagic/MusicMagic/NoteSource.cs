@@ -35,12 +35,18 @@ namespace MusicMagic {
             }
         }
 
+        private WaveFormat _format;
         /// <summary>
         /// The format for the source.
         /// </summary>
         public WaveFormat Format {
-            get;
-            private set;
+            get {
+                return _format;
+            }
+            private set {
+                _format = value;
+                clearSourceVoice();
+            }
         }
 
         private SourceVoice _voice;
