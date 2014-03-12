@@ -1,0 +1,301 @@
+﻿<Page
+    x:Class="MusicMagic.PianoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MusicMagic"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Back button and page title -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
+                        Style="{StaticResource NavigationBackButtonNormalStyle}"
+                        VerticalAlignment="Top"
+                        AutomationProperties.Name="Back"
+                        AutomationProperties.AutomationId="BackButton"
+                        AutomationProperties.ItemType="Navigation Button"/>
+            <TextBlock x:Name="pageTitle" Text="Piano" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="471,0,-41,65"/>
+        </Grid>
+
+        <!-- Canvas for the bars of music-->
+        <Canvas Height="200" Margin="65,5,36,423" Grid.Row="1">
+
+
+            <Line
+                X1="0" Y1="20"
+                X2="1265" Y2="20"
+                Stroke="Gray" StrokeThickness="2"
+              />
+            <Line
+                X1="0" Y1="60"
+                X2="1265" Y2="60"
+                Stroke="Gray" StrokeThickness="2"
+              />
+            <Line
+                X1="0" Y1="100"
+                X2="1265" Y2="100"
+                Stroke="Gray" StrokeThickness="2"
+              />
+            <Line
+                X1="0" Y1="140"
+                X2="1265" Y2="140"
+                Stroke="Gray" StrokeThickness="2"
+              />
+            <Line
+                X1="0" Y1="180"
+                X2="1265" Y2="180"
+                Stroke="Gray" StrokeThickness="2"
+              />
+
+            <!--Note test shape-->
+            <Ellipse x:Name="Test"
+                Canvas.Left="30"
+                Canvas.Top="10"
+                Height="20"
+                Width="20"
+                Fill="White"
+                />
+
+        </Canvas>
+
+        <Canvas Margin="49,282,23,28" Grid.Row="1" >
+
+            <!-- Canvas for the Keyboard -->
+            <Rectangle x:Name="a"
+                Width="80"
+                Height="300"
+                Fill="White"
+                Stroke="Black" StrokeThickness="4"
+                RadiusX="18.873" RadiusY="18.873"
+                Canvas.Left="10"
+                Canvas.Top="10"
+                Tapped="a_Tapped"/>
+                       
+            <Rectangle x:Name="b"
+            	Width="80"
+            	Height="300"
+            	Fill="White"
+            	Stroke="Black" StrokeThickness="4"
+            	RadiusX="18.873" RadiusY="18.873"
+            	Canvas.Left="95"
+            	Canvas.Top="10"
+                Tapped="b_Tapped"/>
+            <Rectangle x:Name="c"
+            	Width="80"
+            	Height="300"
+            	Fill="White"
+            	Stroke="Black" StrokeThickness="4"
+            	RadiusX="18.873" RadiusY="18.873"
+            	Canvas.Left="180"
+            	Canvas.Top="10"
+                Tapped="c_Tapped"/>
+            <Rectangle x:Name="d"
+            	Width="80"
+            	Height="300"
+            	Fill="White"
+            	Stroke="Black" StrokeThickness="4"
+            	RadiusX="18.873" RadiusY="18.873"
+            	Canvas.Left="265"
+            	Canvas.Top="8"
+                Tapped="d_Tapped"/>
+            <Rectangle x:Name="e"
+            	Width="80"
+            	Height="300"
+            	Fill="White"
+            	Stroke="Black" StrokeThickness="4"
+            	RadiusX="18.873" RadiusY="18.873"
+            	Canvas.Left="350"
+            	Canvas.Top="10"
+                Tapped="e_Tapped"/>
+            <Rectangle x:Name="f"
+            	Width="80"
+            	Height="300"
+            	Fill="White"
+            	Stroke="Black" StrokeThickness="4"
+            	RadiusX="18.873" RadiusY="18.873"
+            	Canvas.Left="435"
+            	Canvas.Top="10"
+                Tapped="f_Tapped"/>
+            <Rectangle x:Name="g"
+            	Width="80"
+            	Height="300"
+            	Fill="White"
+            	Stroke="Black" StrokeThickness="4"
+            	RadiusX="18.873" RadiusY="18.873"
+            	Canvas.Left="520"
+            	Canvas.Top="10"
+                Tapped="g_Tapped"/>
+            <Rectangle x:Name="high_a"
+            	Width="80"
+            	Height="300"
+            	Fill="White"
+            	Stroke="Black" StrokeThickness="4"
+            	RadiusX="18.873" RadiusY="18.873"
+            	Canvas.Left="605"
+            	Canvas.Top="10"
+                Tapped="high_a_Tapped"/>
+            <Rectangle x:Name="high_b"
+            	Width="80"
+            	Height="300"
+            	Fill="White"
+            	Stroke="Black" StrokeThickness="4"
+            	RadiusX="18.873" RadiusY="18.873"
+            	Canvas.Left="690"
+            	Canvas.Top="10"
+                Tapped="high_b_Tapped"/>
+            <Rectangle x:Name="high_c"
+            	Width="80"
+            	Height="300"
+            	Fill="White"
+            	Stroke="Black" StrokeThickness="4"
+            	RadiusX="18.873" RadiusY="18.873"
+            	Canvas.Left="775"
+            	Canvas.Top="10"
+                Tapped="high_c_Tapped"/>
+            <Rectangle x:Name="high_d"
+            	Width="80"
+            	Height="300"
+            	Fill="White"
+            	Stroke="Black" StrokeThickness="4"
+            	RadiusX="18.873" RadiusY="18.873"
+            	Canvas.Left="860"
+            	Canvas.Top="8"
+                Tapped="high_d_Tapped"/>
+            <Rectangle x:Name="high_e"
+            	Width="80"
+            	Height="300"
+            	Fill="White"
+            	Stroke="Black" StrokeThickness="4"
+            	RadiusX="18.873" RadiusY="18.873"
+            	Canvas.Left="945"
+            	Canvas.Top="8"
+                Tapped="high_e_Tapped"/>
+            <Rectangle x:Name="high_f"
+            	Width="80"
+            	Height="300"
+            	Fill="White"
+            	Stroke="Black" StrokeThickness="4"
+            	RadiusX="18.873" RadiusY="18.873"
+            	Canvas.Left="1030"
+            	Canvas.Top="8"
+                Tapped="high_f_Tapped"/>
+            <Rectangle x:Name="high_g"
+            	Width="80"
+            	Height="300"
+            	Fill="White"
+            	Stroke="Black" StrokeThickness="4"
+            	RadiusX="18.873" RadiusY="18.873"
+            	Canvas.Left="1115"
+            	Canvas.Top="8"
+                Tapped="high_g_Tapped"/>
+            <Rectangle x:Name="a_sharp"
+                Width="45"
+                Height="127"
+                Fill="Black"
+                Stroke="Black" StrokeThickness="4"
+                RadiusX="18.873" RadiusY="18.873"
+            	Canvas.Left="69"
+            	Canvas.Top="10"
+                Tapped="a_sharp_Tapped"/>
+            <Rectangle x:Name="b_sharp"
+            	Width="45"
+            	Height="127"
+            	Fill="Black"
+            	Stroke="Black" StrokeThickness="4"
+            	RadiusX="18.873" RadiusY="18.873"
+            	Canvas.Left="156"
+            	Canvas.Top="8"
+                Tapped="b_sharp_Tapped"/>
+            <Rectangle x:Name="c_sharp"
+            	Width="45"
+            	Height="127"
+            	Fill="Black"
+            	Stroke="Black" StrokeThickness="4"
+            	RadiusX="18.873" RadiusY="18.873"
+            	Canvas.Left="327"
+            	Canvas.Top="10"
+                Tapped="c_sharp_Tapped"/>
+            <Rectangle x:Name="d_sharp"
+            	Width="45"
+            	Height="127"
+            	Fill="Black"
+            	Stroke="Black" StrokeThickness="4"
+            	RadiusX="18.873" RadiusY="18.873"
+            	Canvas.Left="412"
+            	Canvas.Top="8"
+                Tapped="d_sharp_Tapped"/>
+            <Rectangle x:Name="e_sharp"
+            	Width="45"
+            	Height="127"
+            	Fill="Black"
+            	Stroke="Black" StrokeThickness="4"
+            	RadiusX="18.873" RadiusY="18.873"
+            	Canvas.Left="494"
+            	Canvas.Top="10"
+                Tapped="e_sharp_Tapped"/>
+            <Rectangle x:Name="f_sharp"
+            	Width="45"
+            	Height="127"
+            	Fill="Black"
+            	Stroke="Black" StrokeThickness="4"
+            	RadiusX="18.873" RadiusY="18.873"
+            	Canvas.Left="666"
+            	Canvas.Top="10"
+                Tapped="f_sharp_Tapped"/>
+            <Rectangle x:Name="g_sharp"
+            	Width="45"
+            	Height="127"
+            	Fill="Black"
+            	Stroke="Black" StrokeThickness="4"
+            	RadiusX="18.873" RadiusY="18.873"
+            	Canvas.Left="750"
+            	Canvas.Top="8"
+                Tapped="g_sharp_Tapped"/>
+            <Rectangle x:Name="high_a_sharp"
+            	Width="45"
+            	Height="127"
+            	Fill="Black"
+            	Stroke="Black" StrokeThickness="4"
+            	RadiusX="18.873" RadiusY="18.873"
+            	Canvas.Left="921"
+            	Canvas.Top="10"
+                Tapped="high_a_sharp_Tapped"/>
+            <Rectangle x:Name="high_b_sharp"
+            	Width="45"
+            	Height="127"
+            	Fill="Black"
+            	Stroke="Black" StrokeThickness="4"
+            	RadiusX="18.873" RadiusY="18.873"
+            	Canvas.Left="1005"
+            	Canvas.Top="10"
+                Tapped="high_b_sharp_Tapped"/>
+            <Rectangle x:Name="high_c_sharp"
+            	Width="45"
+            	Height="127"
+            	Fill="Black"
+            	Stroke="Black" StrokeThickness="4"
+            	RadiusX="18.873" RadiusY="18.873"
+            	Canvas.Left="1088" Canvas.Top="8"
+                Tapped="high_c_sharp_Tapped"/>
+
+        </Canvas>
+    </Grid>
+</Page>
+
