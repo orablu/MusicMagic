@@ -8,6 +8,7 @@ namespace MusicMagic {
         IEnumerable<INote> Notes { get; set; }
         IList<INoteSource> Sources { get; set; }
         INoteSource GetSource(int pitch);
+        IEnumerable<INote> NotesInRange(int start, int end);
         IEnumerable<INote> NotesInRange(TimeSpan start, TimeSpan end);
         IEnumerator<INote> GetEnumerator();
         bool UpdateNote(INote note);

@@ -113,6 +113,7 @@
     <Compile Include="Note.cs" />
     <Compile Include="Interfaces\INoteSource.cs" />
     <Compile Include="NoteSource.cs" />
+    <Compile Include="NoteStream.cs" />
     <Compile Include="PianoPage.xaml.cs">
       <DependentUpon>PianoPage.xaml</DependentUpon>
     </Compile>

@@ -68,5 +68,16 @@ namespace MusicMagic {
             }
             source = Parent.Sources[Pitch];
         }
+
+        public int CompareTo(INote other) {
+            return this.Start - other.Start;
+        }
+
+        public bool Equals(INote other) {
+            return this.Pitch == other.Pitch &&
+                this.Start == other.Start &&
+                this.Length == other.Length &&
+                this.Parent == other.Parent;
+        }
     }
 }
