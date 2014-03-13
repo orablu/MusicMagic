@@ -26,6 +26,7 @@ namespace MusicMagic {
                 _parent = value;
                 if (Pitch >= 0) {
                     setNoteSource();
+                    Parent.UpdateNote(this);
                 }
             }
         }
@@ -45,6 +46,7 @@ namespace MusicMagic {
                 _pitch = value;
                 if (Parent != null) {
                     setNoteSource();
+                    Parent.UpdateNote(this);
                 }
             }
         }

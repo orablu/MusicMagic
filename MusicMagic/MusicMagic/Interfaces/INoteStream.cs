@@ -10,5 +10,6 @@ namespace MusicMagic {
         INoteSource GetSource(int pitch);
         IEnumerable<INote> NotesInRange(TimeSpan start, TimeSpan end);
         IEnumerator<INote> GetEnumerator();
+        bool UpdateNote(INote note);
     }
 }
