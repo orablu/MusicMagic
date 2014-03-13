@@ -11,5 +11,7 @@ namespace MusicMagic {
         IEnumerable<INote> NotesInRange(TimeSpan start, TimeSpan end);
         IEnumerator<INote> GetEnumerator();
         bool UpdateNote(INote note);
+        void Play();
+        void Play(int start, int end);
     }
 }

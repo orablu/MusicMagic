@@ -7,7 +7,7 @@ using SharpDX.XAudio2;
 using SharpDX.Multimedia;
 
 namespace MusicMagic {
-    interface INote {
+    interface INote : IComparable<INote> {
         INoteStream Parent { get; set; }
         int Start { get; set; }
         int Length { get; set; }
