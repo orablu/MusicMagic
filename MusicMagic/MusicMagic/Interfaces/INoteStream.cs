@@ -7,12 +7,13 @@ namespace MusicMagic {
         NoteType Type { get; set; }
         IEnumerable<INote> Notes { get; set; }
         IList<INoteSource> Sources { get; set; }
+        bool Playing { get; }
         INoteSource GetSource(int pitch);
         IEnumerable<INote> NotesInRange(int start, int end);
         IEnumerable<INote> NotesInRange(TimeSpan start, TimeSpan end);
-        IEnumerator<INote> GetEnumerator();
         bool UpdateNote(INote note);
         void Play();
         void Play(int start, int end);
+        void Stop();
     }
 }
