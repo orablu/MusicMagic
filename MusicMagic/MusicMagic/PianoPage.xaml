@@ -35,7 +35,7 @@
         </Grid>
 
         <!-- Canvas for the bars of music-->
-        <Canvas Height="200" Margin="65,5,36,423" Grid.Row="1">
+        <Canvas Height="200" Margin="65,5,36,423" Grid.Row="1" x:Name="staff">
 
 
             <Line
@@ -64,10 +64,11 @@
                 Stroke="Gray" StrokeThickness="2"
               />
 
-            <!--Note test shape-->
-            <Ellipse x:Name="Test"
+            <!--Notes-->
+            <!--Will probbaly fix later to not suck-->
+            <Ellipse x:Name="slota"
                 Canvas.Left="30"
-                Canvas.Top="10"
+                Canvas.Top="110"
                 Height="20"
                 Width="20"
                 Fill="White"
