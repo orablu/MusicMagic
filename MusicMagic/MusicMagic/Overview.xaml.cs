@@ -20,22 +20,28 @@ namespace MusicMagic
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class Overview : Page
     {
-        public MainPage()
+
+
+        private void NewTrack1_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            this.InitializeComponent();
+
         }
 
-        private void InitializeComponent()
+        private void NewTrack2_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            throw new NotImplementedException();
+
         }
 
-        private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
+        private void NewTrack3_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(PianoPage));
+
         }
 
+        private void NewTrack4_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
     }
 }
