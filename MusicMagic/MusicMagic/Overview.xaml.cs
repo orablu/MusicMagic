@@ -24,22 +24,22 @@ namespace MusicMagic
     {
 
 
-        private void NewTrack1_Tapped(object sender, TappedRoutedEventArgs e)
+        private void NewPiano_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            this.Frame.Navigate(typeof(PianoPage));
         }
 
-        private void NewTrack2_Tapped(object sender, TappedRoutedEventArgs e)
+        private void NewDrum_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            this.Frame.Navigate(typeof(DrumPage));
         }
 
-        private void NewTrack3_Tapped(object sender, TappedRoutedEventArgs e)
+        private void NewGuitar_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            this.Frame.Navigate(typeof(GuitarPage));
         }
 
-        private void NewTrack4_Tapped(object sender, TappedRoutedEventArgs e)
+        private void NewUploaded_Tapped(object sender, TappedRoutedEventArgs e)
         {
 
         }

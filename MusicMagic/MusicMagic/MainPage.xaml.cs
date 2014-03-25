@@ -27,10 +27,7 @@ namespace MusicMagic
             this.InitializeComponent();
         }
 
-        private void InitializeComponent()
-        {
-            throw new NotImplementedException();
-        }
+
 
         private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
         {

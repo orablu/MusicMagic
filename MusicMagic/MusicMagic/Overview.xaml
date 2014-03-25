@@ -41,7 +41,7 @@
                 Width="250"
                 Stroke="White"
                 StrokeThickness="2"
-                Tapped="NewTrack1_Tapped"
+                Tapped="NewPiano_Tapped"
                 />
             <Ellipse
             	Canvas.Left="336"
@@ -50,7 +50,7 @@
             	Width="250"
             	Stroke="White"
             	StrokeThickness="2"
-                Tapped="NewTrack2_Tapped"
+                Tapped="NewDrum_Tapped"
                 />
             <Ellipse
             	Canvas.Left="659"
@@ -59,7 +59,7 @@
             	Width="250"
             	Stroke="White"
             	StrokeThickness="2"
-                Tapped="NewTrack3_Tapped"
+                Tapped="NewGuitar_Tapped"
                 />
             <Ellipse
             	Canvas.Left="972"
@@ -68,7 +68,7 @@
             	Width="250"
             	Stroke="White"
             	StrokeThickness="2"
-                Tapped="NewTrack4_Tapped"
+                Tapped="NewUploaded_Tapped"
                 />
         </Canvas>
     </Grid>

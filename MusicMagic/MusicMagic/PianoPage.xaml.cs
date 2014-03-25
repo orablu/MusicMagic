@@ -33,7 +33,9 @@ namespace MusicMagic
         //TODO: flash color when key is pressed
         private void a_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            SolidColorBrush newColor= new SolidColorBrush();
+            newColor.Color = Color.FromArgb(0, 0, 255, 255);
+            newColor.Color = Color.FromArgb(0, 255, 255, 255);
         }
 
         private void b_Tapped(object sender, TappedRoutedEventArgs e)
