@@ -36,36 +36,56 @@ namespace MusicMagic
             SolidColorBrush newColor= new SolidColorBrush();
             newColor.Color = Color.FromArgb(0, 0, 255, 255);
             newColor.Color = Color.FromArgb(0, 255, 255, 255);
+            pianoA.Play();
         }
 
         private void b_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            SolidColorBrush newColor = new SolidColorBrush();
+            newColor.Color = Color.FromArgb(0, 0, 255, 255);
+            newColor.Color = Color.FromArgb(0, 255, 255, 255);
+            pianoB.Play();
 
         }
 
         private void c_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            SolidColorBrush newColor = new SolidColorBrush();
+            newColor.Color = Color.FromArgb(0, 0, 255, 255);
+            newColor.Color = Color.FromArgb(0, 255, 255, 255);
+            pianoC.Play();
         }
 
         private void d_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            SolidColorBrush newColor = new SolidColorBrush();
+            newColor.Color = Color.FromArgb(0, 0, 255, 255);
+            newColor.Color = Color.FromArgb(0, 255, 255, 255);
+            pianoD.Play();
         }
 
         private void e_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            SolidColorBrush newColor = new SolidColorBrush();
+            newColor.Color = Color.FromArgb(0, 0, 255, 255);
+            newColor.Color = Color.FromArgb(0, 255, 255, 255);
+            pianoE.Play();
         }
 
         private void f_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            SolidColorBrush newColor = new SolidColorBrush();
+            newColor.Color = Color.FromArgb(0, 0, 255, 255);
+            newColor.Color = Color.FromArgb(0, 255, 255, 255);
+            pianoF.Play();
         }
 
         private void g_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            SolidColorBrush newColor = new SolidColorBrush();
+            newColor.Color = Color.FromArgb(0, 0, 255, 255);
+            newColor.Color = Color.FromArgb(0, 255, 255, 255);
+            pianoG.Play();
         }
 
         private void high_a_Tapped(object sender, TappedRoutedEventArgs e)

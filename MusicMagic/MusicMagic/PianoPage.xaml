@@ -34,6 +34,15 @@
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="471,0,-41,65"/>
         </Grid>
 
+        <!--Sound files for keys-->
+        <MediaElement Source="Resources\piano-a.wav" Name="pianoA"/>
+        <MediaElement Source="Resources\piano-b.wav" Name="pianoB"/>
+        <MediaElement Source="Resources\piano-c.wav" Name="pianoC"/>
+        <MediaElement Source="Resources\piano-d.wav" Name="pianoD"/>
+        <MediaElement Source="Resources\piano-e.wav" Name="pianoE"/>
+        <MediaElement Source="Resources\piano-f.wav" Name="pianoF"/>
+        <MediaElement Source="Resources\piano-g.wav" Name="pianoG"/>
+        
         <!-- Canvas for the bars of music-->
         <Canvas Height="200" Margin="65,5,36,423" Grid.Row="1" x:Name="staff">
 
