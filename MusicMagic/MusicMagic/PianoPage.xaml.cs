@@ -40,156 +40,29 @@ namespace MusicMagic
             };
         }
 
-        //TODO: flash color when key is pressed
-        private void a_Tapped(object sender, TappedRoutedEventArgs e)
+        private void TapStarted(object sender, RoutedEventArgs e) {
+            // TODO: Change key color to pressed color
+            // TODO: Play tone until done
+            // TODO: Save start time if recording
+        }
+
+        private void TapRelease(object sender, RoutedEventArgs e)
         {
-            SolidColorBrush newColor= new SolidColorBrush();
-            newColor.Color = Color.FromArgb(0, 0, 255, 255);
-            newColor.Color = Color.FromArgb(0, 255, 255, 255);
+            // TODO: Change key color to default color
 
             var key = (Rectangle)sender;
-            var note = new Note() {
-                Device = device,
-                Parent = stream,
-                Pitch = (int)key.DataContext,
-                Length = 0, // TODO HALP
-                Start = 0, // TODO HALP
-            };
-            note.Play();
+            var pitch = (int)key.DataContext;
+
+            // TODO: If recording {
+                // Create the new note
+                var note = new Note() {
+                    Device = device,
+                    Parent = stream, // Saves the note to the parent stream
+                    Pitch = pitch,
+                    Start = 0, // TODO: Get saved start time
+                    Length = 0, // TODO: Calculate length
+                };
+            // }
         }
-
-        private void b_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            SolidColorBrush newColor = new SolidColorBrush();
-            newColor.Color = Color.FromArgb(0, 0, 255, 255);
-            newColor.Color = Color.FromArgb(0, 255, 255, 255);
-            pianoB.Play();
-
-        }
-
-        private void c_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            SolidColorBrush newColor = new SolidColorBrush();
-            newColor.Color = Color.FromArgb(0, 0, 255, 255);
-            newColor.Color = Color.FromArgb(0, 255, 255, 255);
-            pianoC.Play();
-        }
-
-        private void d_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            SolidColorBrush newColor = new SolidColorBrush();
-            newColor.Color = Color.FromArgb(0, 0, 255, 255);
-            newColor.Color = Color.FromArgb(0, 255, 255, 255);
-            pianoD.Play();
-        }
-
-        private void e_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            SolidColorBrush newColor = new SolidColorBrush();
-            newColor.Color = Color.FromArgb(0, 0, 255, 255);
-            newColor.Color = Color.FromArgb(0, 255, 255, 255);
-            pianoE.Play();
-        }
-
-        private void f_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            SolidColorBrush newColor = new SolidColorBrush();
-            newColor.Color = Color.FromArgb(0, 0, 255, 255);
-            newColor.Color = Color.FromArgb(0, 255, 255, 255);
-            pianoF.Play();
-        }
-
-        private void g_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            SolidColorBrush newColor = new SolidColorBrush();
-            newColor.Color = Color.FromArgb(0, 0, 255, 255);
-            newColor.Color = Color.FromArgb(0, 255, 255, 255);
-            pianoG.Play();
-        }
-
-        private void high_a_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void high_b_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void high_c_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void high_d_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void high_e_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void high_f_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void high_g_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-/*
-        private void a_sharp_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void b_sharp_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void c_sharp_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void d_sharp_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void e_sharp_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void f_sharp_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void g_sharp_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void high_a_sharp_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void high_b_sharp_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void high_c_sharp_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }*/
     }
 }
