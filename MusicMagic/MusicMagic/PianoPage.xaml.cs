@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
+using SharpDX.XAudio2;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -24,11 +25,20 @@ namespace MusicMagic
     /// </summary>
     public sealed partial class PianoPage : Page
     {
-
+        XAudio2 device;
+        INoteStream stream;
 
         int counter = 0;
 
-
+        public void Initialize() {
+            device = new XAudio2();
+            var sources = new List<INoteSource>();
+            // Add sources.
+            stream = new NoteStream() {
+                Sources = sources,
+                Type = NoteType.Piano,
+            };
+        }
 
         //TODO: flash color when key is pressed
         private void a_Tapped(object sender, TappedRoutedEventArgs e)
@@ -36,7 +46,16 @@ namespace MusicMagic
             SolidColorBrush newColor= new SolidColorBrush();
             newColor.Color = Color.FromArgb(0, 0, 255, 255);
             newColor.Color = Color.FromArgb(0, 255, 255, 255);
-            pianoA.Play();
+
+            var key = (Rectangle)sender;
+            var note = new Note() {
+                Device = device,
+                Parent = stream,
+                Pitch = (int)key.DataContext,
+                Length = 0, // TODO HALP
+                Start = 0, // TODO HALP
+            };
+            note.Play();
         }
 
         private void b_Tapped(object sender, TappedRoutedEventArgs e)
