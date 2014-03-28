@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
+using SharpDX.XAudio2;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -24,156 +25,44 @@ namespace MusicMagic
     /// </summary>
     public sealed partial class PianoPage : Page
     {
+        XAudio2 device;
+        INoteStream stream;
 
+        int counter = 0;
 
-        //Given two lists, or however we want to store the notes value, draw the notes.
-        //Requires much testing after ability to run code on my machine(i.e. sharpDX)
-        //in order to decide on spacing @Andy
-        private void Redraw(List<int> VertPlace, List<int> HorizPlace)
-        {
-            //Canvas.get/set(obj)
-        }
-      
-        private void a_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            SolidColorBrush newColor= new SolidColorBrush();
-            newColor.Color = Color.FromArgb(0, 0, 255, 255);
-            newColor.Color = Color.FromArgb(0, 255, 255, 255);
-            pianoA.Play();
+        public void Initialize() {
+            device = new XAudio2();
+            var sources = new List<INoteSource>();
+            // Add sources.
+            stream = new NoteStream() {
+                Sources = sources,
+                Type = NoteType.Piano,
+            };
         }
 
-        private void b_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            SolidColorBrush newColor = new SolidColorBrush();
-            newColor.Color = Color.FromArgb(0, 0, 255, 255);
-            newColor.Color = Color.FromArgb(0, 255, 255, 255);
-            pianoB.Play();
-
+        private void TapStarted(object sender, RoutedEventArgs e) {
+            // TODO: Change key color to pressed color
+            // TODO: Play tone until done
+            // TODO: Save start time if recording
         }
 
-        private void c_Tapped(object sender, TappedRoutedEventArgs e)
+        private void TapRelease(object sender, RoutedEventArgs e)
         {
-            SolidColorBrush newColor = new SolidColorBrush();
-            newColor.Color = Color.FromArgb(0, 0, 255, 255);
-            newColor.Color = Color.FromArgb(0, 255, 255, 255);
-            pianoC.Play();
-        }
+            // TODO: Change key color to default color
 
-        private void d_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            SolidColorBrush newColor = new SolidColorBrush();
-            newColor.Color = Color.FromArgb(0, 0, 255, 255);
-            newColor.Color = Color.FromArgb(0, 255, 255, 255);
-            pianoD.Play();
-        }
+            var key = (Rectangle)sender;
+            var pitch = (int)key.DataContext;
 
-        private void e_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            SolidColorBrush newColor = new SolidColorBrush();
-            newColor.Color = Color.FromArgb(0, 0, 255, 255);
-            newColor.Color = Color.FromArgb(0, 255, 255, 255);
-            pianoE.Play();
-        }
-
-        private void f_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            SolidColorBrush newColor = new SolidColorBrush();
-            newColor.Color = Color.FromArgb(0, 0, 255, 255);
-            newColor.Color = Color.FromArgb(0, 255, 255, 255);
-            pianoF.Play();
-        }
-
-        private void g_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            SolidColorBrush newColor = new SolidColorBrush();
-            newColor.Color = Color.FromArgb(0, 0, 255, 255);
-            newColor.Color = Color.FromArgb(0, 255, 255, 255);
-            pianoG.Play();
-        }
-
-        private void high_a_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void high_b_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void high_c_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void high_d_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void high_e_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void high_f_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void high_g_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void a_sharp_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void b_sharp_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void c_sharp_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void d_sharp_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void e_sharp_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void f_sharp_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void g_sharp_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void high_a_sharp_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void high_b_sharp_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
-        }
-
-        private void high_c_sharp_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-
+            // TODO: If recording {
+                // Create the new note
+                var note = new Note() {
+                    Device = device,
+                    Parent = stream, // Saves the note to the parent stream
+                    Pitch = pitch,
+                    Start = 0, // TODO: Get saved start time
+                    Length = 0, // TODO: Calculate length
+                };
+            // }
         }
     }
 }
