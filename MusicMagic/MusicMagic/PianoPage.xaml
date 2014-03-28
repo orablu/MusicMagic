@@ -6,7 +6,22 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+   
+    <!--App bar for play/record-->
+    <Page.BottomAppBar>
+        <AppBar>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal">
+                    <!--Add buttons here, need custom icons-->
+                </StackPanel>
+            </Grid>
+        </AppBar>
+    </Page.BottomAppBar>
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ChildrenTransitions>
             <TransitionCollection>
@@ -42,51 +57,53 @@
         <MediaElement Source="Resources\piano-e.wav" Name="pianoE"/>
         <MediaElement Source="Resources\piano-f.wav" Name="pianoF"/>
         <MediaElement Source="Resources\piano-g.wav" Name="pianoG"/>
-        
+
+    
+
         <!-- Canvas for the bars of music-->
-        <Canvas Height="200" Margin="65,5,36,423" Grid.Row="1" x:Name="staff">
+        <Viewbox Stretch="Fill" StretchDirection="Both" Height="200" Margin="10,0,10,428" Grid.Row="1">
+            <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollMode="Enabled"
+                ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollMode ="Disabled" 
+                Margin="20,0,20,0" Height="300" Width="300">
 
+                <Canvas  Height="300" Width="1000">
 
-            <Line
-                X1="0" Y1="20"
-                X2="1265" Y2="20"
-                Stroke="Gray" StrokeThickness="2"
-              />
-            <Line
-                X1="0" Y1="60"
-                X2="1265" Y2="60"
-                Stroke="Gray" StrokeThickness="2"
-              />
-            <Line
-                X1="0" Y1="100"
-                X2="1265" Y2="100"
-                Stroke="Gray" StrokeThickness="2"
-              />
-            <Line
-                X1="0" Y1="140"
-                X2="1265" Y2="140"
-                Stroke="Gray" StrokeThickness="2"
-              />
-            <Line
-                X1="0" Y1="180"
-                X2="1265" Y2="180"
-                Stroke="Gray" StrokeThickness="2"
-              />
+                    <Line
+                        X1="0" Y1="40"
+                        X2="1000" Y2="40"
+                        Stroke="Gray" StrokeThickness="4"
+                    />
 
-            <!--Notes-->
-            <!--Will probbaly fix later to not suck-->
-            <Ellipse x:Name="slota"
-                Canvas.Left="30"
-                Canvas.Top="110"
-                Height="20"
-                Width="20"
-                Fill="White"
-                />
+                    <Line
+                        X1="0" Y1="90"
+                        X2="1000" Y2="90"
+                        Stroke="Gray" StrokeThickness="4"
+                    />
 
-        </Canvas>
+                    <Line
+                        X1="0" Y1="150"
+                        X2="1000" Y2="150"
+                        Stroke="Gray" StrokeThickness="4"
+                    />
+
+                    <Line
+                        X1="0" Y1="200"
+                        X2="1000" Y2="200"
+                        Stroke="Gray" StrokeThickness="4"
+                    />
+
+                    <Line
+                        X1="0" Y1="250"
+                        X2="1000" Y2="250"
+                        Stroke="Gray" StrokeThickness="4"
+                    />
+                </Canvas>
+            </ScrollViewer>
+        </Viewbox>
 
         <Canvas Margin="49,282,23,28" Grid.Row="1" >
 
+            
             <!-- Canvas for the Keyboard -->
             <Rectangle x:Name="a"
                 Width="80"
@@ -97,7 +114,7 @@
                 Canvas.Left="10"
                 Canvas.Top="10"
                 Tapped="a_Tapped"/>
-                       
+
             <Rectangle x:Name="b"
             	Width="80"
             	Height="300"

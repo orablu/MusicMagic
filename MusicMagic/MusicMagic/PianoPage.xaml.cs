@@ -26,11 +26,14 @@ namespace MusicMagic
     {
 
 
-        int counter = 0;
-
-
-
-        //TODO: flash color when key is pressed
+        //Given two lists, or however we want to store the notes value, draw the notes.
+        //Requires much testing after ability to run code on my machine(i.e. sharpDX)
+        //in order to decide on spacing @Andy
+        private void Redraw(List<int> VertPlace, List<int> HorizPlace)
+        {
+            //Canvas.get/set(obj)
+        }
+      
         private void a_Tapped(object sender, TappedRoutedEventArgs e)
         {
             SolidColorBrush newColor= new SolidColorBrush();
@@ -122,7 +125,7 @@ namespace MusicMagic
         {
 
         }
-/*
+
         private void a_sharp_Tapped(object sender, TappedRoutedEventArgs e)
         {
 
@@ -171,6 +174,6 @@ namespace MusicMagic
         private void high_c_sharp_Tapped(object sender, TappedRoutedEventArgs e)
         {
 
-        }*/
+        }
     }
 }

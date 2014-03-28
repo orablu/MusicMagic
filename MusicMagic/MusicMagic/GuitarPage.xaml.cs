@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Windows;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -21,8 +22,12 @@ namespace MusicMagic
     /// <summary>
     /// A basic page that provides characteristics common to most applications.
     /// </summary>
-    public sealed partial class BasicPage1 : Page
+    public sealed partial class GuitarPage : Page
     {
+
+        public void Redraw(){
+
+        }
 
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
@@ -45,7 +50,7 @@ namespace MusicMagic
         }
 
 
-        public BasicPage1()
+        public GuitarPage()
         {
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
