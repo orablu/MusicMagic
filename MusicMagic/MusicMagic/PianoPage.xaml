@@ -48,17 +48,7 @@
             <TextBlock x:Name="pageTitle" Text="Piano" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="471,0,-41,65"/>
         </Grid>
-
-        <!--Sound files for keys-->
-        <MediaElement Source="Resources\piano-a.wav" Name="pianoA"/>
-        <MediaElement Source="Resources\piano-b.wav" Name="pianoB"/>
-        <MediaElement Source="Resources\piano-c.wav" Name="pianoC"/>
-        <MediaElement Source="Resources\piano-d.wav" Name="pianoD"/>
-        <MediaElement Source="Resources\piano-e.wav" Name="pianoE"/>
-        <MediaElement Source="Resources\piano-f.wav" Name="pianoF"/>
-        <MediaElement Source="Resources\piano-g.wav" Name="pianoG"/>
-
-    
+   
 
         <!-- Canvas for the bars of music-->
         <Viewbox Stretch="Fill" StretchDirection="Both" Height="200" Margin="10,0,10,428" Grid.Row="1">
@@ -113,7 +103,7 @@
                 RadiusX="18.873" RadiusY="18.873"
                 Canvas.Left="10"
                 Canvas.Top="10"
-                Tapped="a_Tapped"/>
+                />
 
             <Rectangle x:Name="b"
             	Width="80"
@@ -123,7 +113,7 @@
             	RadiusX="18.873" RadiusY="18.873"
             	Canvas.Left="95"
             	Canvas.Top="10"
-                Tapped="b_Tapped"/>
+                />
             <Rectangle x:Name="c"
             	Width="80"
             	Height="300"
@@ -132,7 +122,7 @@
             	RadiusX="18.873" RadiusY="18.873"
             	Canvas.Left="180"
             	Canvas.Top="10"
-                Tapped="c_Tapped"/>
+                />
             <Rectangle x:Name="d"
             	Width="80"
             	Height="300"
@@ -141,7 +131,7 @@
             	RadiusX="18.873" RadiusY="18.873"
             	Canvas.Left="265"
             	Canvas.Top="8"
-                Tapped="d_Tapped"/>
+                />
             <Rectangle x:Name="e"
             	Width="80"
             	Height="300"
@@ -150,7 +140,7 @@
             	RadiusX="18.873" RadiusY="18.873"
             	Canvas.Left="350"
             	Canvas.Top="10"
-                Tapped="e_Tapped"/>
+                />
             <Rectangle x:Name="f"
             	Width="80"
             	Height="300"
@@ -159,7 +149,7 @@
             	RadiusX="18.873" RadiusY="18.873"
             	Canvas.Left="435"
             	Canvas.Top="10"
-                Tapped="f_Tapped"/>
+                />
             <Rectangle x:Name="g"
             	Width="80"
             	Height="300"
@@ -168,7 +158,7 @@
             	RadiusX="18.873" RadiusY="18.873"
             	Canvas.Left="520"
             	Canvas.Top="10"
-                Tapped="g_Tapped"/>
+                />
             <Rectangle x:Name="high_a"
             	Width="80"
             	Height="300"
@@ -177,7 +167,7 @@
             	RadiusX="18.873" RadiusY="18.873"
             	Canvas.Left="605"
             	Canvas.Top="10"
-                Tapped="high_a_Tapped"/>
+                />
             <Rectangle x:Name="high_b"
             	Width="80"
             	Height="300"
@@ -186,7 +176,7 @@
             	RadiusX="18.873" RadiusY="18.873"
             	Canvas.Left="690"
             	Canvas.Top="10"
-                Tapped="high_b_Tapped"/>
+                />
             <Rectangle x:Name="high_c"
             	Width="80"
             	Height="300"
@@ -195,7 +185,7 @@
             	RadiusX="18.873" RadiusY="18.873"
             	Canvas.Left="775"
             	Canvas.Top="10"
-                Tapped="high_c_Tapped"/>
+                />
             <Rectangle x:Name="high_d"
             	Width="80"
             	Height="300"
@@ -204,7 +194,7 @@
             	RadiusX="18.873" RadiusY="18.873"
             	Canvas.Left="860"
             	Canvas.Top="8"
-                Tapped="high_d_Tapped"/>
+                />
             <Rectangle x:Name="high_e"
             	Width="80"
             	Height="300"
@@ -213,7 +203,7 @@
             	RadiusX="18.873" RadiusY="18.873"
             	Canvas.Left="945"
             	Canvas.Top="8"
-                Tapped="high_e_Tapped"/>
+                />
             <Rectangle x:Name="high_f"
             	Width="80"
             	Height="300"
@@ -222,7 +212,7 @@
             	RadiusX="18.873" RadiusY="18.873"
             	Canvas.Left="1030"
             	Canvas.Top="8"
-                Tapped="high_f_Tapped"/>
+                />
             <Rectangle x:Name="high_g"
             	Width="80"
             	Height="300"
@@ -231,7 +221,7 @@
             	RadiusX="18.873" RadiusY="18.873"
             	Canvas.Left="1115"
             	Canvas.Top="8"
-                Tapped="high_g_Tapped"/>
+                />
             <Rectangle x:Name="a_sharp"
                 Width="45"
                 Height="127"
@@ -240,7 +230,7 @@
                 RadiusX="18.873" RadiusY="18.873"
             	Canvas.Left="69"
             	Canvas.Top="10"
-                Tapped="a_sharp_Tapped"/>
+                />
             <Rectangle x:Name="b_sharp"
             	Width="45"
             	Height="127"
@@ -249,7 +239,7 @@
             	RadiusX="18.873" RadiusY="18.873"
             	Canvas.Left="156"
             	Canvas.Top="8"
-                Tapped="b_sharp_Tapped"/>
+                />
             <Rectangle x:Name="c_sharp"
             	Width="45"
             	Height="127"
@@ -258,7 +248,7 @@
             	RadiusX="18.873" RadiusY="18.873"
             	Canvas.Left="327"
             	Canvas.Top="10"
-                Tapped="c_sharp_Tapped"/>
+                />
             <Rectangle x:Name="d_sharp"
             	Width="45"
             	Height="127"
@@ -267,7 +257,7 @@
             	RadiusX="18.873" RadiusY="18.873"
             	Canvas.Left="412"
             	Canvas.Top="8"
-                Tapped="d_sharp_Tapped"/>
+                />
             <Rectangle x:Name="e_sharp"
             	Width="45"
             	Height="127"
@@ -276,7 +266,7 @@
             	RadiusX="18.873" RadiusY="18.873"
             	Canvas.Left="494"
             	Canvas.Top="10"
-                Tapped="e_sharp_Tapped"/>
+                />
             <Rectangle x:Name="f_sharp"
             	Width="45"
             	Height="127"
@@ -285,7 +275,7 @@
             	RadiusX="18.873" RadiusY="18.873"
             	Canvas.Left="666"
             	Canvas.Top="10"
-                Tapped="f_sharp_Tapped"/>
+                />
             <Rectangle x:Name="g_sharp"
             	Width="45"
             	Height="127"
@@ -294,7 +284,7 @@
             	RadiusX="18.873" RadiusY="18.873"
             	Canvas.Left="750"
             	Canvas.Top="8"
-                Tapped="g_sharp_Tapped"/>
+                />
             <Rectangle x:Name="high_a_sharp"
             	Width="45"
             	Height="127"
@@ -303,7 +293,7 @@
             	RadiusX="18.873" RadiusY="18.873"
             	Canvas.Left="921"
             	Canvas.Top="10"
-                Tapped="high_a_sharp_Tapped"/>
+                />
             <Rectangle x:Name="high_b_sharp"
             	Width="45"
             	Height="127"
@@ -312,7 +302,7 @@
             	RadiusX="18.873" RadiusY="18.873"
             	Canvas.Left="1005"
             	Canvas.Top="10"
-                Tapped="high_b_sharp_Tapped"/>
+                />
             <Rectangle x:Name="high_c_sharp"
             	Width="45"
             	Height="127"
@@ -320,7 +310,7 @@
             	Stroke="Black" StrokeThickness="4"
             	RadiusX="18.873" RadiusY="18.873"
             	Canvas.Left="1088" Canvas.Top="8"
-                Tapped="high_c_sharp_Tapped"/>
+                />
 
         </Canvas>
     </Grid>
