@@ -40,6 +40,15 @@ namespace MusicMagic
             };
         }
 
+        //Given two lists, or however we want to store the notes value, draw the notes.
+        //Requires much testing after ability to run code on my machine(i.e. sharpDX)
+        //in order to decide on spacing @Andy
+        private void Redraw(List<int> VertPlace, List<int> HorizPlace)
+        {
+            //Canvas.get/set(obj)
+        }
+      
+
         private void TapStarted(object sender, RoutedEventArgs e) {
             // TODO: Change key color to pressed color
             // TODO: Play tone until done
