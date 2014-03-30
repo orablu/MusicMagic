@@ -103,6 +103,8 @@
                 RadiusX="18.873" RadiusY="18.873"
                 Canvas.Left="10"
                 Canvas.Top="10"
+                Tapped="TapStarted"
+                DataContext="1"
                 />
 
             <Rectangle x:Name="b"

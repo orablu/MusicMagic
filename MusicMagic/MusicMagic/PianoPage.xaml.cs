@@ -28,7 +28,7 @@ namespace MusicMagic
         XAudio2 device;
         INoteStream stream;
 
-        int counter = 0;
+        int startTime = 0;
 
         public void Initialize() {
             device = new XAudio2();
@@ -50,17 +50,24 @@ namespace MusicMagic
       
 
         private void TapStarted(object sender, RoutedEventArgs e) {
-            // TODO: Change key color to pressed color
+            //Change key color to pressed color
+            var key = (Rectangle)sender;
+            key.Fill = new SolidColorBrush(Color.FromArgb(0,0,255,255));//yellow
+
             // TODO: Play tone until done
+            var pitch = (int)key.DataContext;
+            
             // TODO: Save start time if recording
         }
 
         private void TapRelease(object sender, RoutedEventArgs e)
         {
-            // TODO: Change key color to default color
+            
 
             var key = (Rectangle)sender;
             var pitch = (int)key.DataContext;
+            //Change key color to default color
+            key.Fill = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));//white
 
             // TODO: If recording {
                 // Create the new note
@@ -68,8 +75,8 @@ namespace MusicMagic
                     Device = device,
                     Parent = stream, // Saves the note to the parent stream
                     Pitch = pitch,
-                    Start = 0, // TODO: Get saved start time
-                    Length = 0, // TODO: Calculate length
+                    Start = startTime, //Get saved start time
+                    Length = 0, // TODO: Calculate length; CurrentTime - StartTime
                 };
             // }
         }
