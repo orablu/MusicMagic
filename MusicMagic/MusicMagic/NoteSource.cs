@@ -194,5 +194,18 @@ namespace MusicMagic {
             clearSourceVoice();
             clearDataStream();
         }
+
+        public void Play() {
+            if (dataStream == null) {
+                setDataStream();
+            }
+            var buffer = new AudioBuffer {
+                AudioBytes = (int)dataStream.Length,
+                Flags = BufferFlags.EndOfStream,
+                PlayBegin = 0,
+                PlayLength = NoteLength;
+            };
+            SubmitSourceBuffer(buffer, PacketsInfo);
+        }
     }
 }

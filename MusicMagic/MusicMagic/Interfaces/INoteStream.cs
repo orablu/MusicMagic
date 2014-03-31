@@ -14,6 +14,7 @@ namespace MusicMagic {
         bool UpdateNote(INote note);
         void Play();
         void Play(int start, int end);
+        void PlayPitch(int pitch);
         void Stop();
     }
 }

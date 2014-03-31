@@ -14,6 +14,7 @@ namespace MusicMagic {
         private IAsyncAction playTask;
 
         public NoteStream() {
+            notesInPitch = new Dictionary<int, SortedSet<INote>>();
         }
 
         public NoteType Type { get; set; }
@@ -112,6 +113,10 @@ namespace MusicMagic {
                     source.Voice.Stop();
                 }
             };
+        }
+
+        public void PlayPitch(int pitch) {
+            Sources[pitch].Play();
         }
 
         public void Stop() {
