@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MusicMagic.Common;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -37,12 +38,12 @@ namespace MusicMagic
         XAudio2 device;
         INoteStream stream;
 
-        int startTime = 0;
+        int CurrentTime = 0;
+        int SpaceSetter = 1;
 
         public void Initialize() {
             device = new XAudio2();
-            var sources = getSources();
-            // Add sources.
+            var sources = getSources();//Add Sources
             stream = new NoteStream() {
                 Sources = sources,
                 Type = NoteType.Piano,
@@ -65,7 +66,7 @@ namespace MusicMagic
             key.Fill = new SolidColorBrush(Colors.LightYellow);
 
             // Play tone
-            var pitch = (int)key.DataContext;
+            var pitch = Convert.ToInt32(key.DataContext);
             stream.PlayPitch(pitch);
             
             // TODO: Save start time if recording
@@ -76,17 +77,55 @@ namespace MusicMagic
             
 
             var key = (Rectangle)sender;
-            var pitch = (int)key.DataContext;
+            var pitch = Convert.ToInt32(key.DataContext);
             //Change key color to default color
             key.Fill = new SolidColorBrush(Colors.WhiteSmoke);
 
             // TODO: If recording {
+                //Draw the note 
+                //Currently uses even spacing
+                //TEMP until starttime established
+                //Also, this will change once we figure out which specific notes we want to use
+                Ellipse newNote  = new Ellipse();
+                newNote.Fill = new SolidColorBrush(Colors.White);
+                Canvas.SetLeft(newNote, SpaceSetter * 10);
+                newNote.Height = 25;
+                newNote.Width = 5;
+                switch (pitch)
+                {
+                    case 0: 
+                        Canvas.SetTop(newNote, 25);
+                        break;
+                    case 1:
+                        Canvas.SetTop(newNote, 50);
+                        break;
+                    case 2:
+                        Canvas.SetTop(newNote, 75);
+                        break;
+                    case 3:
+                        Canvas.SetTop(newNote, 110);
+                        break;
+                    case 4:
+                        Canvas.SetTop(newNote, 135);
+                        break;
+                    case 5:
+                        Canvas.SetTop(newNote, 160);
+                        break;
+                    case 6:
+                        Canvas.SetTop(newNote, 185);
+                        break;
+                    case 7:
+                        Canvas.SetTop(newNote, 215);
+                        break;
+                }
+                SpaceSetter = SpaceSetter++;
+
                 // Create the new note
                 var note = new Note() {
                     Device = device,
                     Parent = stream, // Saves the note to the parent stream
                     Pitch = pitch,
-                    Start = startTime, //Get saved start time
+                    Start = CurrentTime, //Get saved start time
                     Length = 0, // TODO: Calculate length; CurrentTime - StartTime
                 };
             // }
@@ -105,5 +144,83 @@ namespace MusicMagic
             }
             return sources;
         }
+        private NavigationHelper navigationHelper;
+        private ObservableDictionary defaultViewModel = new ObservableDictionary();
+
+        /// <summary>
+        /// This can be changed to a strongly typed view model.
+        /// </summary>
+        public ObservableDictionary DefaultViewModel
+        {
+            get { return this.defaultViewModel; }
+        }
+
+        /// <summary>
+        /// NavigationHelper is used on each page to aid in navigation and 
+        /// process lifetime management
+        /// </summary>
+        public NavigationHelper NavigationHelper
+        {
+            get { return this.navigationHelper; }
+        }
+
+
+        public PianoPage()
+        {
+            this.InitializeComponent();
+            this.navigationHelper = new NavigationHelper(this);
+            this.navigationHelper.LoadState += navigationHelper_LoadState;
+            this.navigationHelper.SaveState += navigationHelper_SaveState;
+        }
+
+        /// <summary>
+        /// Populates the page with content passed during navigation. Any saved state is also
+        /// provided when recreating a page from a prior session.
+        /// </summary>
+        /// <param name="sender">
+        /// The source of the event; typically <see cref="NavigationHelper"/>
+        /// </param>
+        /// <param name="e">Event data that provides both the navigation parameter passed to
+        /// <see cref="Frame.Navigate(Type, Object)"/> when this page was initially requested and
+        /// a dictionary of state preserved by this page during an earlier
+        /// session. The state will be null the first time a page is visited.</param>
+        private void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Preserves state associated with this page in case the application is suspended or the
+        /// page is discarded from the navigation cache.  Values must conform to the serialization
+        /// requirements of <see cref="SuspensionManager.SessionState"/>.
+        /// </summary>
+        /// <param name="sender">The source of the event; typically <see cref="NavigationHelper"/></param>
+        /// <param name="e">Event data that provides an empty dictionary to be populated with
+        /// serializable state.</param>
+        private void navigationHelper_SaveState(object sender, SaveStateEventArgs e)
+        {
+        }
+
+        #region NavigationHelper registration
+
+        /// The methods provided in this section are simply used to allow
+        /// NavigationHelper to respond to the page's navigation methods.
+        /// 
+        /// Page specific logic should be placed in event handlers for the  
+        /// <see cref="GridCS.Common.NavigationHelper.LoadState"/>
+        /// and <see cref="GridCS.Common.NavigationHelper.SaveState"/>.
+        /// The navigation parameter is available in the LoadState method 
+        /// in addition to page state preserved during an earlier session.
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            navigationHelper.OnNavigatedTo(e);
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            navigationHelper.OnNavigatedFrom(e);
+        }
+
+        #endregion
     }
 }

@@ -195,6 +195,11 @@ namespace MusicMagic {
             clearDataStream();
         }
 
+        private void SubmitSourceBuffer(AudioBuffer buffer, uint[] PacketsInfo)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Play() {
             if (dataStream == null) {
                 setDataStream();
@@ -203,9 +208,11 @@ namespace MusicMagic {
                 AudioBytes = (int)dataStream.Length,
                 Flags = BufferFlags.EndOfStream,
                 PlayBegin = 0,
-                PlayLength = NoteLength;
+                PlayLength = NoteLength,
             };
             SubmitSourceBuffer(buffer, PacketsInfo);
         }
+
+
     }
 }
