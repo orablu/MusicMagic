@@ -39,7 +39,10 @@ namespace MusicMagic
         INoteStream stream;
 
         int CurrentTime = 0;
-        int SpaceSetter = 1;
+        int SpaceSetter = 1;//temporary till stream is fixed
+        bool isRecording = false;
+        //private static System.Timers.Timer timer;
+        //our project doesn't recognize System.timers as a valid using
 
         public void Initialize() {
             device = new XAudio2();
@@ -58,7 +61,23 @@ namespace MusicMagic
             //Canvas.SetLeft(obj, x);
             //Canvas.SetTop(obj, y);
         }
-      
+
+        private void PlayBarButton_Click(object sender, RoutedEventArgs e)
+        {
+           //TODO: play saved stream
+        }
+
+        private void RecordBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            isRecording = !isRecording;
+           //TODO:change Icon
+            //starts the timer
+            //if(recording)
+            //timer = new Systems.Timer.Timer(1000);
+            //timer.Enabled = true;
+            //timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+            //
+        }
 
         private void TapStarted(object sender, RoutedEventArgs e) {
             //Change key color to pressed color
@@ -222,5 +241,7 @@ namespace MusicMagic
         }
 
         #endregion
+
+
     }
 }
