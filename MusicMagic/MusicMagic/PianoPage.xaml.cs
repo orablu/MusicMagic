@@ -36,6 +36,7 @@ namespace MusicMagic
         };
 
         XAudio2 device;
+        MasteringVoice master;
         INoteStream stream;
 
         int CurrentTime = 0;
@@ -46,7 +47,9 @@ namespace MusicMagic
 
         public void Initialize() {
             device = new XAudio2();
-            var sources = getSources();//Add Sources
+            master = new MasteringVoice(device);
+            var sources = getSources();
+            // Add sources.
             stream = new NoteStream() {
                 Sources = sources,
                 Type = NoteType.Piano,
@@ -61,13 +64,13 @@ namespace MusicMagic
             //Canvas.SetLeft(obj, x);
             //Canvas.SetTop(obj, y);
         }
-
-        private void PlayButton_Click(object sender, RoutedEventArgs e)
+      
+        private void PlayBarButton_Click(object sender, RoutedEventArgs e)
         {
            //TODO: play saved stream
         }
 
-        private void RecordButton_Click(object sender, RoutedEventArgs e)
+        private void RecordBarButton_Click(object sender, RoutedEventArgs e)
         {
             isRecording = !isRecording;
            //TODO:change Icon
