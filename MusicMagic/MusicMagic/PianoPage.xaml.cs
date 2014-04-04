@@ -35,12 +35,14 @@ namespace MusicMagic
         };
 
         XAudio2 device;
+        MasteringVoice master;
         INoteStream stream;
 
         int startTime = 0;
 
         public void Initialize() {
             device = new XAudio2();
+            master = new MasteringVoice(device);
             var sources = getSources();
             // Add sources.
             stream = new NoteStream() {
