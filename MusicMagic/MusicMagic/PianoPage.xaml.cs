@@ -62,12 +62,12 @@ namespace MusicMagic
             //Canvas.SetTop(obj, y);
         }
 
-        private void PlayBarButton_Click(object sender, RoutedEventArgs e)
+        private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
            //TODO: play saved stream
         }
 
-        private void RecordBarButton_Click(object sender, RoutedEventArgs e)
+        private void RecordButton_Click(object sender, RoutedEventArgs e)
         {
             isRecording = !isRecording;
            //TODO:change Icon
