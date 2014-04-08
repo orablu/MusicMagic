@@ -32,7 +32,7 @@ namespace MusicMagic
 
         // Length, loop start, loop end
         private readonly int[,] NOTE_INFO = new int[,] {
-            { 0, 0, 0 },
+            { 1540, 800, 50 },
         };
 
         XAudio2 device;
@@ -244,6 +244,10 @@ namespace MusicMagic
         }
 
         #endregion
+
+        private void Page_Loaded(object sender, RoutedEventArgs e) {
+            Initialize();
+        }
 
 
     }

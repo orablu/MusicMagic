@@ -57,6 +57,7 @@ namespace MusicMagic {
             voice.SubmitSourceBuffer(
                 source.GetAudioBuffer(Length),
                 source.PacketsInfo);
+            voice.Start();
         }
 
         private void setNoteSource() {

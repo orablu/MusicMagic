@@ -7,10 +7,12 @@ using SharpDX.XAudio2;
 using System.IO;
 using Windows.Storage;
 using SharpDX.Multimedia;
+using SharpDX;
 
 namespace MusicMagic {
     class NoteSource : INoteSource {
-        private Stream dataStream;
+        private SoundStream stream;
+        private DataStream dataStream;
 
         /// <summary>
         /// Creates a new NoteSource.
@@ -122,6 +124,7 @@ namespace MusicMagic {
                 setDataStream();
             }
             return new AudioBuffer {
+                Stream = dataStream,
                 AudioBytes = (int)dataStream.Length,
                 Flags = BufferFlags.EndOfStream,
                 LoopBegin = LoopBegin,
@@ -152,12 +155,15 @@ namespace MusicMagic {
         }
 
         private void clearDataStream() {
-            if (dataStream == null) {
-                return;
+            if (stream != null) {
+                stream.Dispose();
             }
-            dataStream.Dispose();
+            if (dataStream != null) {
+                dataStream.Dispose();
+            }
+            stream = null;
             dataStream = null;
-            Format = null;
+            _format = null;
             PacketsInfo = null;
         }
 
@@ -181,13 +187,13 @@ namespace MusicMagic {
             if (Path == null) {
                 throw new NullReferenceException("There is no path specified.");
             }
-            var localStorage = ApplicationData.Current.LocalFolder;
+            clearDataStream();
+            var localStorage = Windows.ApplicationModel.Package.Current.InstalledLocation;
             var file = localStorage.OpenStreamForReadAsync(Path).Result;
-            var stream = new SoundStream(file);
+            stream = new SoundStream(file);
             dataStream = stream.ToDataStream();
             Format = stream.Format;
             PacketsInfo = stream.DecodedPacketsInfo;
-            stream.Dispose();
         }
 
         public void Dispose() {
@@ -195,22 +201,19 @@ namespace MusicMagic {
             clearDataStream();
         }
 
-        private void SubmitSourceBuffer(AudioBuffer buffer, uint[] PacketsInfo)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Play() {
             if (dataStream == null) {
                 setDataStream();
             }
             var buffer = new AudioBuffer {
+                Stream = dataStream,
                 AudioBytes = (int)dataStream.Length,
                 Flags = BufferFlags.EndOfStream,
                 PlayBegin = 0,
                 PlayLength = NoteLength,
             };
-            SubmitSourceBuffer(buffer, PacketsInfo);
+            Voice.SubmitSourceBuffer(buffer, PacketsInfo);
+            Voice.Start();
         }
 
 
