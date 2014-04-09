@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
+using System.Threading.Tasks;
+using Windows.System.Threading;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
@@ -40,8 +43,10 @@ namespace MusicMagic
         INoteStream stream;
 
         int CurrentTime = 0;
+        int StartTime = 0;
         int SpaceSetter = 1;//temporary till stream is fixed
         bool isRecording = false;
+        DispatcherTimer timer = new DispatcherTimer();
 
 
         public void Initialize() {
@@ -53,11 +58,11 @@ namespace MusicMagic
                 Sources = sources,
                 Type = NoteType.Piano,
             };
-            //System.Windows.Threading.DispatcherTimer myDispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-            //myDispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 1000); // 100 Milliseconds 
-            //myDispatcherTimer.Tick += new EventHandler(Each_Tick);
+            timer.Tick += timer_Tick;
+            timer.Interval = new TimeSpan(0, 0, 1);
         }
 
+        
         //Given two lists, or however we want to store the notes value, draw the notes.
         //Requires much testing
         //in order to decide on spacing @Andy
@@ -74,22 +79,25 @@ namespace MusicMagic
         }
 
 
-        //ran each second pass
-        public void Each_Tick(object o, EventArgs sender)
-        {
-            CurrentTime++;
-        }
+
         //run on Charms bar's record button click
         private void RecordButton_Click(object sender, RoutedEventArgs e)
         {
             isRecording = true;
-            //myDispatcherTimer.Start();
+            timer.Start();
+
+        }
+        //run after each second has passed while recording
+        void timer_Tick(object sender, object e)
+        {
+            CurrentTime++;
+            
         }
         //Run on Charms bar's stop button click
         private void StopButton_Click(object sender, RoutedEventArgs e)
         {
             isRecording = false;
-            //myDispatcherTimer.Stop();
+            timer.Stop();
             CurrentTime = 0;
         }
         private void TapStarted(object sender, RoutedEventArgs e) {
@@ -101,7 +109,9 @@ namespace MusicMagic
             var pitch = Convert.ToInt32(key.DataContext);
             stream.PlayPitch(pitch);
             
-            // TODO: Save start time if recording
+            if(isRecording){
+                StartTime = CurrentTime;
+            }
         }
 
         private void TapRelease(object sender, RoutedEventArgs e)
@@ -157,8 +167,8 @@ namespace MusicMagic
                     Device = device,
                     Parent = stream, // Saves the note to the parent stream
                     Pitch = pitch,
-                    Start = CurrentTime, //Get saved start time
-                    Length = 0, // TODO: Calculate length; CurrentTime - StartTime
+                    Start = StartTime, //Get saved start time
+                    Length = CurrentTime - StartTime, // TODO: Calculate length; CurrentTime - StartTime
                 };
             // }
         }
