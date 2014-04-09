@@ -42,8 +42,7 @@ namespace MusicMagic
         int CurrentTime = 0;
         int SpaceSetter = 1;//temporary till stream is fixed
         bool isRecording = false;
-        //private static System.Timers.Timer timer;
-        //our project doesn't recognize System.timers as a valid using
+
 
         public void Initialize() {
             device = new XAudio2();
@@ -54,10 +53,13 @@ namespace MusicMagic
                 Sources = sources,
                 Type = NoteType.Piano,
             };
+            //System.Windows.Threading.DispatcherTimer myDispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            //myDispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 1000); // 100 Milliseconds 
+            //myDispatcherTimer.Tick += new EventHandler(Each_Tick);
         }
 
         //Given two lists, or however we want to store the notes value, draw the notes.
-        //Requires much testing after ability to run code on my machine(i.e. sharpDX)
+        //Requires much testing
         //in order to decide on spacing @Andy
         private void Redraw(List<int> VertPlace, List<int> HorizPlace)
         {
@@ -65,23 +67,31 @@ namespace MusicMagic
             //Canvas.SetTop(obj, y);
         }
       
+        //run on charms bar's play button click
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
            //TODO: play saved stream
         }
 
+
+        //ran each second pass
+        public void Each_Tick(object o, EventArgs sender)
+        {
+            CurrentTime++;
+        }
+        //run on Charms bar's record button click
         private void RecordButton_Click(object sender, RoutedEventArgs e)
         {
-            isRecording = !isRecording;
-           //TODO:change Icon
-            //starts the timer
-            //if(recording)
-            //timer = new Systems.Timer.Timer(1000);
-            //timer.Enabled = true;
-            //timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
-            //
+            isRecording = true;
+            //myDispatcherTimer.Start();
         }
-
+        //Run on Charms bar's stop button click
+        private void StopButton_Click(object sender, RoutedEventArgs e)
+        {
+            isRecording = false;
+            //myDispatcherTimer.Stop();
+            CurrentTime = 0;
+        }
         private void TapStarted(object sender, RoutedEventArgs e) {
             //Change key color to pressed color
             var key = (Rectangle)sender;

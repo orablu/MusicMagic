@@ -27,6 +27,7 @@
                     <!--Add buttons here, need custom icons-->
                     <AppBarButton x:Name="Play" Label="Play" Icon="Play" Click="PlayButton_Click"/>
                     <AppBarButton x:Name="Record" Label="Record" Icon="Audio" Click="RecordButton_Click"/>
+                    <AppBarButton x:Name="Stop" Label="Stop" Icon="Stop" Click="StopButton_Click"/>
                 </StackPanel>
             </Grid>
         </AppBar>
