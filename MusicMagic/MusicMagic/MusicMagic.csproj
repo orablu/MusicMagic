@@ -122,6 +122,9 @@
     </Compile>
     <Compile Include="Note.cs" />
     <Compile Include="Interfaces\INoteSource.cs" />
+    <Compile Include="NoteOverlay.xaml.cs">
+      <DependentUpon>NoteOverlay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NoteSource.cs" />
     <Compile Include="NoteStream.cs" />
     <Compile Include="Overview.xaml.cs">
@@ -188,6 +191,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NoteOverlay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Overview.xaml">
       <SubType>Designer</SubType>

@@ -7,9 +7,17 @@ using System.Text;
 using System.Threading.Tasks;
 using SharpDX.XAudio2;
 using Windows.Storage;
+using System.ComponentModel;
 
 namespace MusicMagic {
     class Note : INote {
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string name) {
+            if (PropertyChanged != null) {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
         private INoteSource source;
 
         public Note() {
@@ -28,14 +36,36 @@ namespace MusicMagic {
                     setNoteSource();
                     Parent.UpdateNote(this);
                 }
+                OnPropertyChanged("Parent");
             }
         }
 
-        public XAudio2 Device { get; set; }
+        private XAudio2 _device;
+        public XAudio2 Device {
+            get { return _device; }
+            set {
+                _device = value;
+                OnPropertyChanged("Device");
+            }
+        }
 
-        public int Start { get; set; }
+        private int _start;
+        public int Start {
+            get { return _start; }
+            set {
+                _start = value;
+                OnPropertyChanged("Start");
+            }
+        }
 
-        public int Length { get; set; }
+        private int _length;
+        public int Length {
+            get { return _length; }
+            set {
+                _length = value;
+                OnPropertyChanged("Length");
+            }
+        }
 
         private int _pitch;
         public int Pitch {
@@ -48,6 +78,7 @@ namespace MusicMagic {
                     setNoteSource();
                     Parent.UpdateNote(this);
                 }
+                OnPropertyChanged("Pitch");
             }
         }
 
