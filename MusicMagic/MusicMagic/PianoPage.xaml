@@ -68,7 +68,7 @@
                 ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollMode ="Disabled" 
                 Margin="20,0,20,0" Height="300" Width="300">
 
-                <Canvas  Height="300" Width="1000">
+                <Canvas  Height="300" Width="1000" x:Name="Staff">
 
                     <Line
                         X1="0" Y1="40"

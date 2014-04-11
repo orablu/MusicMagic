@@ -44,10 +44,11 @@ namespace MusicMagic
 
         int CurrentTime = 0;
         int StartTime = 0;
-        int SpaceSetter = 1;//temporary till stream is fixed
         bool isRecording = false;
         DispatcherTimer timer = new DispatcherTimer();
-
+        List<int> VertPlace = new List<int>();
+        List<int> HorizPlace = new List<int>();
+        List<int> length = new List<int>();
 
         public void Initialize() {
             device = new XAudio2();
@@ -64,12 +65,22 @@ namespace MusicMagic
 
         
         //Given two lists, or however we want to store the notes value, draw the notes.
-        //Requires much testing
-        //in order to decide on spacing @Andy
-        private void Redraw(List<int> VertPlace, List<int> HorizPlace)
+
+        private void Redraw(List<int> VertPlace, List<int> HorizPlace, List<int> length)
         {
-            //Canvas.SetLeft(obj, x);
-            //Canvas.SetTop(obj, y);
+            //TODO: wipe the staff
+            //ask Wes at meeting
+            for(int i = 0;i<VertPlace.Count;i++)
+            {
+                Ellipse newNote = new Ellipse();
+                newNote.Fill = new SolidColorBrush(Colors.White);
+                Canvas.SetLeft(newNote, HorizPlace[i] * 100);
+                Canvas.SetTop(newNote, VertPlace[i]);
+                newNote.Height = 25;
+                newNote.Width = length[i]*5;
+                newNote.DataContext = i;
+            }
+            
         }
       
         //run on charms bar's play button click
@@ -124,43 +135,38 @@ namespace MusicMagic
             key.Fill = new SolidColorBrush(Colors.WhiteSmoke);
 
             // TODO: If recording {
-                //Draw the note 
-                //Currently uses even spacing
-                //TEMP until starttime established
-                //Also, this will change once we figure out which specific notes we want to use
-                Ellipse newNote  = new Ellipse();
-                newNote.Fill = new SolidColorBrush(Colors.White);
-                Canvas.SetLeft(newNote, SpaceSetter * 10);
-                newNote.Height = 25;
-                newNote.Width = 5;
-                switch (pitch)
-                {
-                    case 0: 
-                        Canvas.SetTop(newNote, 25);
-                        break;
-                    case 1:
-                        Canvas.SetTop(newNote, 50);
-                        break;
-                    case 2:
-                        Canvas.SetTop(newNote, 75);
-                        break;
-                    case 3:
-                        Canvas.SetTop(newNote, 110);
-                        break;
-                    case 4:
-                        Canvas.SetTop(newNote, 135);
-                        break;
-                    case 5:
-                        Canvas.SetTop(newNote, 160);
-                        break;
-                    case 6:
-                        Canvas.SetTop(newNote, 185);
-                        break;
-                    case 7:
-                        Canvas.SetTop(newNote, 215);
-                        break;
-                }
-                SpaceSetter = SpaceSetter++;
+                //Assigns the vertical alignment of the note based on pitch for drawing
+            switch (pitch)
+            {
+                case 0:
+                    VertPlace.Add(25);
+                    break;
+                case 1:
+                    VertPlace.Add(50);
+                    break;
+                case 2:
+                    VertPlace.Add(75);
+                    break;
+                case 3:
+                    VertPlace.Add(110);
+                    break;
+                case 4:
+                    VertPlace.Add(135);
+                    break;
+                case 5:
+                    VertPlace.Add(160);
+                    break;
+                case 6:
+                    VertPlace.Add(185);
+                    break;
+                case 7:
+                    VertPlace.Add(215);
+                    break;
+            }
+            //assigns the horizontal alignment for drawing
+            HorizPlace.Add(StartTime);
+            //assigns length of note for drawing
+            length.Add(CurrentTime - StartTime);
 
                 // Create the new note
                 var note = new Note() {
@@ -168,7 +174,7 @@ namespace MusicMagic
                     Parent = stream, // Saves the note to the parent stream
                     Pitch = pitch,
                     Start = StartTime, //Get saved start time
-                    Length = CurrentTime - StartTime, // TODO: Calculate length; CurrentTime - StartTime
+                    Length = CurrentTime - StartTime,//calculate length
                 };
             // }
         }
