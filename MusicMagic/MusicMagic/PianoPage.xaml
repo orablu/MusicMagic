@@ -27,6 +27,7 @@
                     <!--Add buttons here, need custom icons-->
                     <AppBarButton x:Name="Play" Label="Play" Icon="Play" Click="PlayButton_Click"/>
                     <AppBarButton x:Name="Record" Label="Record" Icon="Audio" Click="RecordButton_Click"/>
+                    <AppBarButton x:Name="Stop" Label="Stop" Icon="Stop" Click="StopButton_Click"/>
                 </StackPanel>
             </Grid>
         </AppBar>
@@ -49,6 +50,7 @@
                 <ColumnDefinition Width="120"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+            
             <Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
                         Style="{StaticResource NavigationBackButtonNormalStyle}"
                         VerticalAlignment="Top"
@@ -66,7 +68,7 @@
                 ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollMode ="Disabled" 
                 Margin="20,0,20,0" Height="300" Width="300">
 
-                <Canvas  Height="300" Width="1000">
+                <Canvas  Height="300" Width="1000" x:Name="Staff">
 
                     <Line
                         X1="0" Y1="40"
