@@ -7,6 +7,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.System.Threading;
+using Windows.Storage;
+using System.IO;
 
 namespace MusicMagic {
     class NoteStream : INoteStream {
@@ -148,6 +150,44 @@ namespace MusicMagic {
                 hasNext = iterator.MoveNext();
                 next = iterator.Current;
                 current.Play();
+            }
+        }
+
+        public void serialize()
+        {
+
+        }
+        public void loadStream()
+        {
+            var localStorage = Windows.Storage.ApplicationData.Current.LocalFolder;
+            var file = localStorage.GetFileAsync("/text.csv").GetResults();
+            var lines = FileIO.ReadLinesAsync(file).GetResults();
+            foreach (string line in lines)
+            {
+                var words = line.Split(',');
+                
+                var note = new Note();
+                note.Start = Convert.ToInt32(words[0]);
+                note.Length = Convert.ToInt32(words[1]);
+                note.Pitch = Convert.ToInt32(words[2]);
+                Add(note);
+            }
+        }
+        public void saveStream()
+        {
+            string [] csv = new string[4];
+            var folder = ApplicationData.Current.LocalFolder;
+            var file = folder.CreateFileAsync("blah.txt").GetResults();
+            foreach (KeyValuePair<int, SortedSet<INote>> allNotes in notesInPitch)
+            {
+                foreach (Note note in allNotes.Value) {
+                    csv[0] = Convert.ToString(note.Start) + ", ";
+                    csv[1] = Convert.ToString(note.Length) + ", ";
+                    csv[2] = Convert.ToString(note.Pitch);
+                    csv[3] = Environment.NewLine;
+                    
+                }
+                 FileIO.WriteLinesAsync(file, csv);
             }
         }
     }
