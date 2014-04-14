@@ -49,6 +49,7 @@ namespace MusicMagic
         List<int> VertPlace = new List<int>();
         List<int> HorizPlace = new List<int>();
         List<int> length = new List<int>();
+        Canvas notesBar = new Canvas();
 
         public void Initialize() {
             device = new XAudio2();
@@ -61,6 +62,9 @@ namespace MusicMagic
             };
             timer.Tick += timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 1);
+            notesBar.Width = 1000;
+            notesBar.Height = 300;
+            
         }
 
         
@@ -68,8 +72,7 @@ namespace MusicMagic
 
         private void Redraw(List<int> VertPlace, List<int> HorizPlace, List<int> length)
         {
-            //TODO: wipe the staff
-            //ask Wes at meeting
+            notesBar.Children.Clear();
             for(int i = 0;i<VertPlace.Count;i++)
             {
                 Ellipse newNote = new Ellipse();
@@ -79,6 +82,7 @@ namespace MusicMagic
                 newNote.Height = 25;
                 newNote.Width = length[i]*5;
                 newNote.DataContext = i;
+                notesBar.Children.Add(newNote);
             }
             
         }
@@ -134,7 +138,7 @@ namespace MusicMagic
             //Change key color to default color
             key.Fill = new SolidColorBrush(Colors.WhiteSmoke);
 
-            // TODO: If recording {
+            //if (isRecording) {
                 //Assigns the vertical alignment of the note based on pitch for drawing
             switch (pitch)
             {
@@ -176,7 +180,8 @@ namespace MusicMagic
                     Start = StartTime, //Get saved start time
                     Length = CurrentTime - StartTime,//calculate length
                 };
-            // }
+                Redraw(VertPlace, HorizPlace, length);
+           // }
         }
 
         private List<INoteSource> getSources() {

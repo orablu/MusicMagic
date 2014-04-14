@@ -63,10 +63,10 @@
    
 
         <!-- Canvas for the bars of music-->
-        <Viewbox Stretch="Fill" StretchDirection="Both" Height="200" Margin="10,0,10,428" Grid.Row="1">
+        <Viewbox Stretch="Fill" StretchDirection="Both" Height="200" Margin="10,0,10,428" Grid.Row="1" x:Name="viewbox">
             <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollMode="Enabled"
                 ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollMode ="Disabled" 
-                Margin="20,0,20,0" Height="300" Width="300">
+                Margin="20,0,20,0" Height="300" Width="300" x:Name="ScrollBox">
 
                 <Canvas  Height="300" Width="1000" x:Name="Staff">
 
