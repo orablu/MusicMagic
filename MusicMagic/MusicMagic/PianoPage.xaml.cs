@@ -69,7 +69,7 @@ namespace MusicMagic
 
         
         //Given two lists, or however we want to store the notes value, draw the notes.
-
+        //FLAGGED NOT WORKING AS INTENDED
         private void Redraw(List<int> VertPlace, List<int> HorizPlace, List<int> length)
         {
             notesBar.Children.Clear();
@@ -114,6 +114,14 @@ namespace MusicMagic
             isRecording = false;
             timer.Stop();
             CurrentTime = 0;
+        }
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO: Save stuff
+        }
+        private void LoadButton_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO: Load Stuff
         }
         private void TapStarted(object sender, RoutedEventArgs e) {
             //Change key color to pressed color

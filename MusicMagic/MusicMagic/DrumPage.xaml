@@ -47,34 +47,123 @@
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="473,0,30,40"/>
         </Grid>
         <!-- Canvas for the bars of music-->
-        <Canvas Height="200" Margin="65,5,36,423" Grid.Row="1" x:Name="staff">
+        <Viewbox Stretch="Fill" StretchDirection="Both" Height="200" Margin="10,0,10,428" Grid.Row="1" x:Name="viewbox">
+            <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollMode="Enabled"
+                ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollMode ="Disabled" 
+                Margin="20,0,20,0" Height="300" Width="300" x:Name="ScrollBox">
+
+                <Canvas  Height="300" Width="1000" x:Name="Staff">
+
+                    <Line
+                        X1="0" Y1="40"
+                        X2="1000" Y2="40"
+                        Stroke="Gray" StrokeThickness="4"
+                    />
+
+                    <Line
+                        X1="0" Y1="90"
+                        X2="1000" Y2="90"
+                        Stroke="Gray" StrokeThickness="4"
+                    />
+
+                    <Line
+                        X1="0" Y1="150"
+                        X2="1000" Y2="150"
+                        Stroke="Gray" StrokeThickness="4"
+                    />
+
+                    <Line
+                        X1="0" Y1="200"
+                        X2="1000" Y2="200"
+                        Stroke="Gray" StrokeThickness="4"
+                    />
+
+                    <Line
+                        X1="0" Y1="250"
+                        X2="1000" Y2="250"
+                        Stroke="Gray" StrokeThickness="4"
+                    />
+                    <!--25,75,135,185,235-->
+                    <!--50,110,160,215-->
+                </Canvas>
+            </ScrollViewer>
+        </Viewbox>
+        <!--Drumset-->
+        <Canvas Margin="65,205,36,58" Grid.Row="1">
+            <Ellipse
+            	Height="150"
+            	Width="150"
+            	Fill="BurlyWood" Canvas.Left="271" Canvas.Top="205"
+            	Stroke="Gray"
+                DataContext="0"
+            />
+            <Ellipse
+                Height="150"
+                Width="150"
+                Fill="Beige" Canvas.Left="271" Canvas.Top="188"
+                Stroke="Gray"
+                DataContext="0"
+            />
+            <Ellipse
+            	Height="150"
+            	Width="150"
+            	Fill="BurlyWood" Canvas.Left="779" Canvas.Top="205"
+            	Stroke="Gray"
+                DataContext="3"
+            />
+            <Ellipse
+            	Height="150"
+            	Width="150"
+            	Fill="Beige" Canvas.Left="779" Canvas.Top="188"
+                Stroke="Gray"
+                DataContext="3"
+            />
+            <Ellipse
+            	Height="150"
+            	Width="150"
+            	Fill="BurlyWood" Canvas.Left="421" Canvas.Top="55"
+            	Stroke="Gray"
+                DataContext="1"
+            />
+            <Ellipse
+            	Height="150"
+            	Width="150"
+            	Fill="Beige" Canvas.Left="421" Canvas.Top="38"
+                Stroke="Gray"
+                DataContext="1"
+            />
+            <Ellipse
+            	Height="150"
+            	Width="150"
+            	Fill="BurlyWood" Canvas.Left="629" Canvas.Top="55"
+            	Stroke="Gray"
+                DataContext="2"
+            />
+            <Ellipse
+            	Height="150"
+            	Width="150"
+            	Fill="Beige" Canvas.Left="629" Canvas.Top="38"
+                Stroke="Gray"
+                DataContext="2"
+            />
+            <Ellipse
+            	Height="93"
+            	Width="150"
+            	Fill="Gold" Canvas.Left="887" Canvas.Top="48"
+                Stroke="Gray"
+                DataContext="4"
+            />
+            <Ellipse
+            	Height="93"
+            	Width="150"
+            	Fill="Gold" Canvas.Left="887" Canvas.Top="25"
+                Stroke="Gray"
+                DataContext="4"
+            />
 
 
-            <Line
-                X1="0" Y1="20"
-                X2="1265" Y2="20"
-                Stroke="Gray" StrokeThickness="2"
-              />
-            <Line
-                X1="0" Y1="60"
-                X2="1265" Y2="60"
-                Stroke="Gray" StrokeThickness="2"
-              />
-            <Line
-                X1="0" Y1="100"
-                X2="1265" Y2="100"
-                Stroke="Gray" StrokeThickness="2"
-              />
-            <Line
-                X1="0" Y1="140"
-                X2="1265" Y2="140"
-                Stroke="Gray" StrokeThickness="2"
-              />
-            <Line
-                X1="0" Y1="180"
-                X2="1265" Y2="180"
-                Stroke="Gray" StrokeThickness="2"
-              />
+
+
         </Canvas>
     </Grid>
 </Page>

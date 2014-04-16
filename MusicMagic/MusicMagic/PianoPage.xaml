@@ -28,6 +28,8 @@
                     <AppBarButton x:Name="Play" Label="Play" Icon="Play" Click="PlayButton_Click"/>
                     <AppBarButton x:Name="Record" Label="Record" Icon="Audio" Click="RecordButton_Click"/>
                     <AppBarButton x:Name="Stop" Label="Stop" Icon="Stop" Click="StopButton_Click"/>
+                    <AppBarButton x:Name="Save" Label="Save" Icon="Save" Click="SaveButton_Click"/>
+                    <AppBarButton x:Name="Load" Label="Load" Icon="Upload" Click="LoadButton_Click"/>
                 </StackPanel>
             </Grid>
         </AppBar>
