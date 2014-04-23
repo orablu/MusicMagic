@@ -14,7 +14,7 @@ namespace MusicMagic {
     class NoteStream : INoteStream {
         private Dictionary<int, SortedSet<INote>> notesInPitch;
         private IAsyncAction playTask;
-
+        private String fileLocation;
         public NoteStream() {
             notesInPitch = new Dictionary<int, SortedSet<INote>>();
         }
@@ -157,34 +157,38 @@ namespace MusicMagic {
         {
 
         }
+        //CSV format: piano, startTime, LengthOfNote, Pitch
         public void loadStream()
         {
             var localStorage = Windows.Storage.ApplicationData.Current.LocalFolder;
-            var file = localStorage.GetFileAsync("/text.csv").GetResults();
+            var file = localStorage.GetFileAsync(fileLocation).GetResults();
             var lines = FileIO.ReadLinesAsync(file).GetResults();
             foreach (string line in lines)
             {
                 var words = line.Split(',');
-                
-                var note = new Note();
-                note.Start = Convert.ToInt32(words[0]);
-                note.Length = Convert.ToInt32(words[1]);
-                note.Pitch = Convert.ToInt32(words[2]);
-                Add(note);
+                if (this.Type.Equals( words[0])) { 
+                    var note = new Note();
+                    note.Start = Convert.ToInt32(words[1]);
+                    note.Length = Convert.ToInt32(words[2]);
+                    note.Pitch = Convert.ToInt32(words[3]);
+                    Add(note);
+                }
             }
         }
+        //CSV format: piano, startTime, LengthOfNote, Pitch
         public void saveStream()
         {
-            string [] csv = new string[4];
+            string [] csv = new string[5];
             var folder = ApplicationData.Current.LocalFolder;
-            var file = folder.CreateFileAsync("blah.txt").GetResults();
+            var file = folder.CreateFileAsync(fileLocation).GetResults();
             foreach (KeyValuePair<int, SortedSet<INote>> allNotes in notesInPitch)
             {
                 foreach (Note note in allNotes.Value) {
-                    csv[0] = Convert.ToString(note.Start) + ", ";
-                    csv[1] = Convert.ToString(note.Length) + ", ";
-                    csv[2] = Convert.ToString(note.Pitch);
-                    csv[3] = Environment.NewLine;
+                    csv[0] = Convert.ToString(this.Type) + ", ";
+                    csv[1] = Convert.ToString(note.Start) + ", ";
+                    csv[2] = Convert.ToString(note.Length) + ", ";
+                    csv[3] = Convert.ToString(note.Pitch);
+                    csv[4] = Environment.NewLine;
                     
                 }
                  FileIO.WriteLinesAsync(file, csv);
