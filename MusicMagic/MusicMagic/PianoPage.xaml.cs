@@ -90,7 +90,8 @@ namespace MusicMagic
         //run on charms bar's play button click
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
-           //TODO: play saved stream
+
+            stream.Play();
         }
 
 
