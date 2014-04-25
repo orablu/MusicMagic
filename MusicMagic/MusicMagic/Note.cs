@@ -76,7 +76,6 @@ namespace MusicMagic {
                 _pitch = value;
                 if (Parent != null) {
                     setNoteSource();
-                    Parent.UpdateNote(this);
                 }
                 OnPropertyChanged("Pitch");
             }

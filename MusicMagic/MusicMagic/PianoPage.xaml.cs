@@ -29,11 +29,13 @@ namespace MusicMagic
     /// </summary>
     public sealed partial class PianoPage : Page
     {
+        private const int WIDTH_OFFSET = 100;
+        private readonly int[] HEIGHT_OFFSETS = new int[] { 25, 50, 75, 110, 135, 160, 185, 215 };
         private readonly string[] NOTE_PATHS = new string[] {
             @"Resources\piano-a.wav",
         };
 
-        // Length, loop start, loop end
+        // Length, loop start, loop length
         private readonly int[,] NOTE_INFO = new int[,] {
             { 1540, 800, 50 },
         };
@@ -46,9 +48,6 @@ namespace MusicMagic
         int StartTime = 0;
         bool isRecording = false;
         DispatcherTimer timer = new DispatcherTimer();
-        List<int> VertPlace = new List<int>();
-        List<int> HorizPlace = new List<int>();
-        List<int> length = new List<int>();
         Canvas notesBar = new Canvas();
 
         public void Initialize() {
@@ -70,19 +69,19 @@ namespace MusicMagic
         
         //Given two lists, or however we want to store the notes value, draw the notes.
         //FLAGGED NOT WORKING AS INTENDED
-        private void Redraw(List<int> VertPlace, List<int> HorizPlace, List<int> length)
+        private void RedrawNotes()
         {
             notesBar.Children.Clear();
-            for(int i = 0;i<VertPlace.Count;i++)
+            foreach (INote note in stream)
             {
                 Ellipse newNote = new Ellipse();
-                newNote.Fill = new SolidColorBrush(Colors.White);
-                Canvas.SetLeft(newNote, HorizPlace[i] * 100);
-                Canvas.SetTop(newNote, VertPlace[i]);
-                newNote.Height = 25;
-                newNote.Width = length[i]*5;
-                newNote.DataContext = i;
                 notesBar.Children.Add(newNote);
+                newNote.Fill = new SolidColorBrush(Colors.White);
+                Canvas.SetLeft(newNote, note.Start * WIDTH_OFFSET);
+                Canvas.SetTop(newNote, HEIGHT_OFFSETS[note.Pitch]);
+                newNote.Height = 25;
+                newNote.Width = note.Length*5;
+                newNote.DataContext = note;
             }
             
         }
@@ -148,48 +147,16 @@ namespace MusicMagic
             key.Fill = new SolidColorBrush(Colors.WhiteSmoke);
 
             //if (isRecording) {
-                //Assigns the vertical alignment of the note based on pitch for drawing
-            switch (pitch)
-            {
-                case 0:
-                    VertPlace.Add(25);
-                    break;
-                case 1:
-                    VertPlace.Add(50);
-                    break;
-                case 2:
-                    VertPlace.Add(75);
-                    break;
-                case 3:
-                    VertPlace.Add(110);
-                    break;
-                case 4:
-                    VertPlace.Add(135);
-                    break;
-                case 5:
-                    VertPlace.Add(160);
-                    break;
-                case 6:
-                    VertPlace.Add(185);
-                    break;
-                case 7:
-                    VertPlace.Add(215);
-                    break;
-            }
-            //assigns the horizontal alignment for drawing
-            HorizPlace.Add(StartTime);
-            //assigns length of note for drawing
-            length.Add(CurrentTime - StartTime);
-
                 // Create the new note
                 var note = new Note() {
                     Device = device,
-                    Parent = stream, // Saves the note to the parent stream
+                    Parent = stream,
                     Pitch = pitch,
                     Start = StartTime, //Get saved start time
                     Length = CurrentTime - StartTime,//calculate length
                 };
-                Redraw(VertPlace, HorizPlace, length);
+                stream.UpdateNote(note);
+                RedrawNotes();
            // }
         }
 

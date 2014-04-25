@@ -74,11 +74,11 @@ namespace MusicMagic {
 
         public bool UpdateNote(INote note) {
             // Have to search for note since the pitch may have changes, and cannot be properly indexed.
-            var result = false;
             foreach (var pitch in notesInPitch) {
-                result |= pitch.Value.Remove(note);
+                pitch.Value.Remove(note);
             }
-            return result && Add(note);
+            var result = Add(note);
+            return result;
         }
 
         public IEnumerator<INote> GetEnumerator() {

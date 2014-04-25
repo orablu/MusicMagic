@@ -17,7 +17,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace MusicMagic {
     public sealed partial class NoteOverlay : UserControl {
-        protected static readonly DependencyProperty NoteProperty = DependencyProperty.Register(
+        private static readonly DependencyProperty NoteProperty = DependencyProperty.Register(
             "Note",
             typeof(INote),
             typeof(NoteOverlay),
