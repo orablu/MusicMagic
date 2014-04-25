@@ -18,5 +18,6 @@ namespace MusicMagic {
         int NoteLength { get; set; }
         AudioBuffer GetAudioBuffer(int length);
         void Play();
+        void Stop();
     }
 }

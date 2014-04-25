@@ -19,37 +19,88 @@ using Windows.UI.Xaml.Shapes;
 
 namespace MusicMagic {
     public sealed partial class Track : UserControl {
+        private const    int   WIDTH_OFFSET   = 100;
+        private readonly int[] HEIGHT_OFFSETS = new int[] { 25, 50, 75, 110, 135, 160, 185, 215 };
+
+        private int? _start;
+        public int Start {
+            get {
+                return _start.Value;
+            }
+            set {
+                var val = _start.HasValue;
+                _start = value;
+                if (!val) {
+                    Redraw();
+                }
+            }
+        }
+
+        private int? _end;
+        public int End {
+            get {
+                return _end.Value;
+            }
+            set {
+                var val = _end.HasValue;
+                _end = value;
+                if (!val) {
+                    Redraw();
+                }
+            }
+        }
+
         public Track() {
             this.InitializeComponent();
         }
-        private const int WIDTH_OFFSET = 100;
-        private readonly int[] HEIGHT_OFFSETS = new int[] { 25, 50, 75, 110, 135, 160, 185, 215 };
-        private readonly string[] NOTE_PATHS = new string[] {
-            @"Resources\piano-a.wav",
-        };
-        // Length, loop start, loop length
-        private readonly int[,] NOTE_INFO = new int[,] {
-            { 1540, 800, 50 },
-        };
 
-        INoteStream stream;
-        Canvas notesBar = new Canvas();
-        private void RedrawNotes()
+        private void UserControl_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args) {
+            Redraw();
+        }
+
+        public void Redraw() {
+            DrawStaff();
+            if (DataContext != null && _start.HasValue && _end.HasValue) {
+                DrawNotes();
+            }
+        }
+
+        private void DrawNotes()
         {
+            INoteStream stream = DataContext as INoteStream;
             notesBar.Children.Clear();
             foreach (INote note in stream)
             {
                 Ellipse newNote = new Ellipse();
-                notesBar.Children.Add(newNote);
                 newNote.Fill = new SolidColorBrush(Colors.White);
                 Canvas.SetLeft(newNote, note.Start * WIDTH_OFFSET);
                 Canvas.SetTop(newNote, HEIGHT_OFFSETS[note.Pitch]);
+                Canvas.SetZIndex(newNote, 20);
                 newNote.Height = 25;
                 newNote.Width = note.Length * 5;
                 newNote.DataContext = note;
+                notesBar.Children.Add(newNote);
             }
+            notesBar.InvalidateMeasure();
+            notesBar.UpdateLayout();
+        }
 
+        private bool staffDrawn = false;
+        private void DrawStaff() {
+            if (staffDrawn) {
+                return;
+            }
+            l1.Y1 = l1.Y2 =       Staff.ActualHeight / 6.0;
+            l2.Y1 = l2.Y2 = 2.0 * Staff.ActualHeight / 6.0;
+            l3.Y1 = l3.Y2 = 3.0 * Staff.ActualHeight / 6.0;
+            l4.Y1 = l4.Y2 = 4.0 * Staff.ActualHeight / 6.0;
+            l5.Y1 = l5.Y2 = 5.0 * Staff.ActualHeight / 6.0;
+            staffDrawn = true;
+        }
+
+        private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e) {
+            staffDrawn = false;
+            Redraw();
         }
     }
-    
 }

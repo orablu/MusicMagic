@@ -7,51 +7,35 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     d:DesignHeight="300"
-    d:DesignWidth="400">
+    d:DesignWidth="400"
+    DataContextChanged="UserControl_DataContextChanged"
+    SizeChanged="UserControl_SizeChanged">
     
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
         <!-- Canvas for the bars of music-->
-        <Viewbox Stretch="Fill" StretchDirection="Both" Height="200" Margin="10,0,10,428" Grid.Row="1" x:Name="viewbox">
-            <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollMode="Enabled"
-                ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollMode ="Disabled" 
-                Margin="20,0,20,0" Height="300" Width="300" x:Name="ScrollBox">
-
-                <Canvas  Height="300" Width="1000" x:Name="Staff">
-
-                    <Line
-                        X1="0" Y1="40"
-                        X2="1000" Y2="40"
-                        Stroke="Gray" StrokeThickness="4"
-                    />
-
-                    <Line
-                        X1="0" Y1="90"
-                        X2="1000" Y2="90"
-                        Stroke="Gray" StrokeThickness="4"
-                    />
-
-                    <Line
-                        X1="0" Y1="150"
-                        X2="1000" Y2="150"
-                        Stroke="Gray" StrokeThickness="4"
-                    />
-
-                    <Line
-                        X1="0" Y1="200"
-                        X2="1000" Y2="200"
-                        Stroke="Gray" StrokeThickness="4"
-                    />
-
-                    <Line
-                        X1="0" Y1="250"
-                        X2="1000" Y2="250"
-                        Stroke="Gray" StrokeThickness="4"
-                    />
-                    <!--25,75,135,185,235-->
-                    <!--50,110,160,215-->
-                </Canvas>
-            </ScrollViewer>
-        </Viewbox>
-
+        <!--<Viewbox Stretch="Fill" StretchDirection="Both" Height="200" Margin="10,0,10,428" Grid.Row="1" x:Name="viewbox">-->
+            <!--<ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollMode="Enabled"-->
+                <!--ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollMode ="Disabled"--> 
+                <!--Margin="20,0,20,0" Height="300" Width="300" x:Name="ScrollBox">-->
+        <Canvas Grid.Row="0" Height="Auto" Width="Auto" x:Name="Staff">
+            <Canvas x:Name="notesBar" Height="{Binding ElementName=Staff, Path=ActualHeight}" Width="{Binding ElementName=Staff, Path=ActualWidth}" />
+            <Line x:Name="l1" X1="0" X2="{Binding ElementName=Staff, Path=ActualWidth}"
+                  Stroke="Gray" StrokeThickness="4" />
+            <Line x:Name="l2" X1="0" X2="{Binding ElementName=Staff, Path=ActualWidth}"
+                  Stroke="Gray" StrokeThickness="4" />
+            <Line x:Name="l3" X1="0" X2="{Binding ElementName=Staff, Path=ActualWidth}"
+                  Stroke="Gray" StrokeThickness="4" />
+            <Line x:Name="l4" X1="0" X2="{Binding ElementName=Staff, Path=ActualWidth}"
+                  Stroke="Gray" StrokeThickness="4" />
+            <Line x:Name="l5" X1="0" X2="{Binding ElementName=Staff, Path=ActualWidth}"
+                  Stroke="Gray" StrokeThickness="4" />
+            <!--25,75,135,185,235-->
+            <!--50,110,160,215-->
+        </Canvas>
+            <!--</ScrollViewer>-->
+        <!--</Viewbox>-->
     </Grid>
 </UserControl>

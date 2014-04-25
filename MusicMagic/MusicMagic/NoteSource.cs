@@ -123,6 +123,8 @@ namespace MusicMagic {
             if (dataStream == null) {
                 setDataStream();
             }
+            var samples = (int)((float)length * (float)Format.SampleRate / 1000f);
+            var maxsamples = (int)((float)NoteLength * (float)Format.SampleRate / 1000f);
             return new AudioBuffer {
                 Stream = dataStream,
                 AudioBytes = (int)dataStream.Length,
@@ -131,7 +133,7 @@ namespace MusicMagic {
                 LoopLength = LoopLength,
                 LoopCount = getLoopCount(length),
                 PlayBegin = 0,
-                PlayLength = Math.Min(length, NoteLength)
+                PlayLength = Math.Min(samples, maxsamples),
             };
         }
 
@@ -217,6 +219,9 @@ namespace MusicMagic {
             Voice.Start();
         }
 
-
+        public void Stop() {
+            Voice.Stop();
+            Voice.FlushSourceBuffers();
+        }
     }
 }
