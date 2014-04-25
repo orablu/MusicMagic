@@ -65,14 +65,14 @@
         </Grid>
         <!--Save dialog-->
         <TextBox
-            Opacity="0"
+            Visibility="Collapsed"
             Text="Choose a name for your file" Margin="162,34,929,70"
             FontSize="20"
             AcceptsReturn="False"
             x:Name="SaveDlg"
             />
         <Button
-            Opacity="0"
+            Visibility="Collapsed"
             Background="Gray" Margin="249,72,0,31" Height="37" Width="88"
             Content="OK"
             Click="SaveOK_Click"
@@ -85,7 +85,7 @@
             Text="Type the name of your file" Margin="814,34,277,70"
             FontSize="20"
             AcceptsReturn="False"
-            Opacity="0"
+            Visibility="Collapsed"
             x:Name="LoadDlg"
             />
         <Button
@@ -93,7 +93,7 @@
             Content="OK"
             Click="LoadOK_Click"
             x:Name="LoadOK"
-            Opacity="0"
+            Visibility="Collapsed"
             />
         <!-- Canvas for the bars of music-->
 

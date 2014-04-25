@@ -37,6 +37,9 @@ namespace MusicMagic
         };
 
         // Length, loop start, loop length
+        private const int NOTE_LENGTH = 0;
+        private const int LOOP_BEGIN  = 1;
+        private const int LOOP_LENGTH = 2;
         private readonly int[,] NOTE_INFO = new int[,] {
             { 1540, 0, 0 },
         };
@@ -109,28 +112,27 @@ namespace MusicMagic
         }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            SaveDlg.Opacity = 1;
-            SaveOK.Opacity = 1;
+            SaveDlg.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            SaveOK.Visibility = Windows.UI.Xaml.Visibility.Visible;
             
         }
         private void SaveOK_Click(object sender, RoutedEventArgs e)
         {
             stream.saveStream(SaveDlg.Text);
-            SaveDlg.Opacity = 0;
-            SaveOK.Opacity = 0;
+            SaveDlg.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            SaveOK.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
-            LoadDlg.Opacity = 1;
-            LoadOK.Opacity = 1;
+            LoadDlg.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            LoadOK.Visibility = Windows.UI.Xaml.Visibility.Visible;
             
         }
         private void LoadOK_Click(object sender, RoutedEventArgs e)
         {
             stream.loadStream(LoadDlg.Text);
-            LoadDlg.Opacity = 0;
-            LoadOK.Opacity = 0;
+            LoadDlg.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            LoadOK.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
         }
         private void TapStarted(object sender, RoutedEventArgs e) {
             //Change key color to pressed color
@@ -173,9 +175,9 @@ namespace MusicMagic
                 sources.Add(new NoteSource() {
                     Device     = device,
                     Path       = NOTE_PATHS[i],
-                    NoteLength = NOTE_INFO[i, 0],
-                    LoopBegin  = NOTE_INFO[i, 1],
-                    LoopLength = NOTE_INFO[i, 2],
+                    NoteLength = NOTE_INFO[i, NOTE_LENGTH],
+                    LoopBegin  = NOTE_INFO[i, LOOP_BEGIN],
+                    LoopLength = NOTE_INFO[i, LOOP_LENGTH],
                 });
             }
             return sources;
