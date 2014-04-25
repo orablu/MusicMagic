@@ -205,12 +205,13 @@ namespace MusicMagic {
             if (dataStream == null) {
                 setDataStream();
             }
+            var samples = (int)((float)NoteLength * (float)Format.SampleRate / 1000f));
             var buffer = new AudioBuffer {
                 Stream = dataStream,
                 AudioBytes = (int)dataStream.Length,
                 Flags = BufferFlags.EndOfStream,
                 PlayBegin = 0,
-                PlayLength = NoteLength,
+                PlayLength = samples,
             };
             Voice.SubmitSourceBuffer(buffer, PacketsInfo);
             Voice.Start();
