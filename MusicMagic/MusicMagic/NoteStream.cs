@@ -112,13 +112,17 @@ namespace MusicMagic {
                 WorkItemPriority.High);
             playTask.Completed = (action, status) => {
                 foreach (var source in Sources) {
-                    source.Voice.Stop();
+                    source.Stop();
                 }
             };
         }
 
         public void PlayPitch(int pitch) {
             Sources[pitch].Play();
+        }
+
+        public void StopPitch(int pitch) {
+            Sources[pitch].Stop();
         }
 
         public void Stop() {

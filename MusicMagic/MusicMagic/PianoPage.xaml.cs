@@ -38,7 +38,7 @@ namespace MusicMagic
 
         // Length, loop start, loop length
         private readonly int[,] NOTE_INFO = new int[,] {
-            { 1540, 800, 50 },
+            { 1540, 0, 0 },
         };
 
         XAudio2 device;
@@ -60,6 +60,7 @@ namespace MusicMagic
                 Sources = sources,
                 Type = NoteType.Piano,
             };
+            PianoTrack.DataContext = stream;
             timer.Tick += timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 0, 0, 1);
             notesBar.Width = 1000;
@@ -72,19 +73,10 @@ namespace MusicMagic
         //FLAGGED NOT WORKING AS INTENDED
         private void RedrawNotes()
         {
-            notesBar.Children.Clear();
-            foreach (INote note in stream)
-            {
-                Ellipse newNote = new Ellipse();
-                notesBar.Children.Add(newNote);
-                newNote.Fill = new SolidColorBrush(Colors.White);
-                Canvas.SetLeft(newNote, note.Start * WIDTH_OFFSET);
-                Canvas.SetTop(newNote, HEIGHT_OFFSETS[note.Pitch]);
-                newNote.Height = 25;
-                newNote.Width = note.Length*5;
-                newNote.DataContext = note;
-            }
-            
+            // TODO: Change these to center over current time.
+            PianoTrack.Start = 0;
+            PianoTrack.End = 1000;
+            PianoTrack.Redraw();
         }
       
         //run on charms bar's play button click
@@ -145,13 +137,11 @@ namespace MusicMagic
 
         private void TapRelease(object sender, RoutedEventArgs e)
         {
-            
-
             var key = (Rectangle)sender;
             var pitch = Convert.ToInt32(key.DataContext);
             //Change key color to default color
             key.Fill = new SolidColorBrush(Colors.WhiteSmoke);
-
+            stream.StopPitch(pitch);
             //if (isRecording) {
                 // Create the new note
                 var note = new Note() {

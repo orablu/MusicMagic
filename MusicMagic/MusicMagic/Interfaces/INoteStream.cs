@@ -15,6 +15,7 @@ namespace MusicMagic {
         void Play();
         void Play(int start, int end);
         void PlayPitch(int pitch);
+        void StopPitch(int pitch);
         void Stop();
         void serialize();
         void saveStream();
