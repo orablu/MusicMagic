@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMagic", "MusicMagic\Mu
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{079ED9EA-C674-478D-B00C-A1736B671625}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToCsv vs2012", "..\..\..\..\Downloads\LinqToCsv\LinqToCsv\Sample vs2012\LinqToCsv vs2012.csproj", "{C10F48B9-40AE-4679-BD5F-D0D571E79C07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,16 @@ Global
 		{064F0602-2785-4862-9177-2F44C783B3D8}.Release|x86.ActiveCfg = Release|x86
 		{064F0602-2785-4862-9177-2F44C783B3D8}.Release|x86.Build.0 = Release|x86
 		{064F0602-2785-4862-9177-2F44C783B3D8}.Release|x86.Deploy.0 = Release|x86
+		{C10F48B9-40AE-4679-BD5F-D0D571E79C07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C10F48B9-40AE-4679-BD5F-D0D571E79C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C10F48B9-40AE-4679-BD5F-D0D571E79C07}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{C10F48B9-40AE-4679-BD5F-D0D571E79C07}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C10F48B9-40AE-4679-BD5F-D0D571E79C07}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C10F48B9-40AE-4679-BD5F-D0D571E79C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C10F48B9-40AE-4679-BD5F-D0D571E79C07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C10F48B9-40AE-4679-BD5F-D0D571E79C07}.Release|ARM.ActiveCfg = Release|Any CPU
+		{C10F48B9-40AE-4679-BD5F-D0D571E79C07}.Release|x64.ActiveCfg = Release|Any CPU
+		{C10F48B9-40AE-4679-BD5F-D0D571E79C07}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

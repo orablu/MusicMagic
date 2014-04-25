@@ -47,9 +47,9 @@
             <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="473,0,30,40"/>
         </Grid>
-        
-        
-        
+
+
+
         <!-- Canvas for the bars of music-->
         <Viewbox Stretch="Fill" StretchDirection="Both" Height="200" Margin="10,0,10,428" Grid.Row="1">
             <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollMode="Enabled"
@@ -57,7 +57,7 @@
                 Margin="20,0,20,0" Height="300" Width="300">
 
                 <Canvas  Height="300" Width="1000">
-                    
+
                     <Line
                         X1="0" Y1="40"
                         X2="1000" Y2="40"
@@ -90,5 +90,93 @@
                 </Canvas>
             </ScrollViewer>
         </Viewbox>
+
+        <Canvas Margin="43,240,29,45" Background="BurlyWood"  Grid.Row="1">
+            <!--Strings-->
+            <Line
+                X1="0" X2="1300"
+                Y1="50" Y2="50"
+                StrokeThickness="6"
+                Stroke="DimGray"
+            />
+            <Line
+                X1="0" X2="1300"
+                Y1="100" Y2="100"
+                StrokeThickness="6"
+                Stroke="DimGray"
+            />
+            <Line
+                X1="0" X2="1300"
+                Y1="150" Y2="150"
+                StrokeThickness="6"
+                Stroke="DimGray"
+            />
+            <Line
+                X1="0" X2="1300"
+                Y1="200" Y2="200"
+                StrokeThickness="6"
+                Stroke="DimGray"
+            />
+            <Line
+                X1="0" X2="1300"
+                Y1="250" Y2="250"
+                StrokeThickness="8"
+                Stroke="DimGray"
+            />
+            <Line
+                X1="0" X2="1300"
+                Y1="300" Y2="300"
+                StrokeThickness="8"
+                Stroke="DimGray"
+                
+            />
+            <!--Fret Bars-->
+            <Line
+                X1="50" X2="50"
+                Y1="0" Y2="350"
+                StrokeThickness="6"
+                Stroke="Black"
+            />
+            <Line
+                X1="300" X2="300"
+                Y1="0" Y2="350"
+                StrokeThickness="6"
+                Stroke="Black"
+            />
+            <Line
+                X1="550" X2="550"
+                Y1="0" Y2="350"
+                StrokeThickness="6"
+                Stroke="Black"
+            />
+            <Line
+                X1="800" X2="800"
+                Y1="0" Y2="350"
+                StrokeThickness="6"
+                Stroke="Black"
+            />
+            <Line
+                X1="1050" X2="1050"
+                Y1="0" Y2="350"
+                StrokeThickness="6"
+                Stroke="Black"
+            />
+            <!--Fret Markers-->
+            <Ellipse
+                Height="30"
+                Width="30" Canvas.Left="158" Canvas.Top="159"
+                Fill="Silver"
+                />
+            <Ellipse
+            	Height="30"
+            	Width="30" Canvas.Left="665" Canvas.Top="159"
+            	Fill="Silver"
+                />
+            <Ellipse
+            	Height="30"
+            	Width="30" Canvas.Left="1165" Canvas.Top="159"
+            	Fill="Silver"
+                />
+        </Canvas>
     </Grid>
 </Page>
