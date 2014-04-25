@@ -10,6 +10,24 @@
     d:DesignWidth="400">
     
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
 
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">Edit Note Properties:</TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0">Pitch:</TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="0">Start:</TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="0">Length:</TextBlock>
+
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=Note, Path=Pitch}" />
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ElementName=Note, Path=Start}" />
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding ElementName=Note, Path=Length}" />
     </Grid>
 </UserControl>
