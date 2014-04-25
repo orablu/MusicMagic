@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.System.Threading;
+using Windows.Storage.Pickers;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
@@ -60,7 +61,7 @@ namespace MusicMagic
                 Type = NoteType.Piano,
             };
             timer.Tick += timer_Tick;
-            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 1);
             notesBar.Width = 1000;
             notesBar.Height = 300;
             timer.Start();
@@ -89,7 +90,6 @@ namespace MusicMagic
         //run on charms bar's play button click
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
-
             stream.Play();
         }
 
@@ -119,6 +119,10 @@ namespace MusicMagic
         {
             //TODO: Save stuff
             //stream.saveStream();
+            TextBox saveDlg = new TextBox(); 
+            String test = saveDlg.Text;
+            
+            
         }
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
