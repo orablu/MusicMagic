@@ -63,7 +63,7 @@ namespace MusicMagic
             timer.Interval = new TimeSpan(0, 0, 1);
             notesBar.Width = 1000;
             notesBar.Height = 300;
-            
+            timer.Start();
         }
 
         
@@ -99,14 +99,14 @@ namespace MusicMagic
         private void RecordButton_Click(object sender, RoutedEventArgs e)
         {
             isRecording = true;
-            timer.Start();
+            //timer.Start();
+           
 
         }
         //run after each second has passed while recording
         void timer_Tick(object sender, object e)
         {
             CurrentTime++;
-            
         }
         //Run on Charms bar's stop button click
         private void StopButton_Click(object sender, RoutedEventArgs e)
@@ -118,10 +118,12 @@ namespace MusicMagic
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             //TODO: Save stuff
+            //stream.saveStream();
         }
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
             //TODO: Load Stuff
+            //stream.loadStream();
         }
         private void TapStarted(object sender, RoutedEventArgs e) {
             //Change key color to pressed color
@@ -132,9 +134,9 @@ namespace MusicMagic
             var pitch = Convert.ToInt32(key.DataContext);
             stream.PlayPitch(pitch);
             
-            if(isRecording){
+           // if(isRecording){
                 StartTime = CurrentTime;
-            }
+            //}
         }
 
         private void TapRelease(object sender, RoutedEventArgs e)

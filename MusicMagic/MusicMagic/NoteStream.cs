@@ -166,13 +166,13 @@ namespace MusicMagic {
             switch (this.Type)
             {
                 case NoteType.Drum:
-                    file = folder.CreateFileAsync("drum.txt").GetResults();
+                    file = folder.CreateFileAsync("drum.csv").GetResults();
                     break;
                 case NoteType.Guitar:
-                    file = folder.CreateFileAsync("guitar.txt").GetResults();
+                    file = folder.CreateFileAsync("guitar.csv").GetResults();
                     break;
                 case NoteType.Piano:
-                    file = folder.CreateFileAsync("piano.txt").GetResults();
+                    file = folder.CreateFileAsync("piano.csv").GetResults();
                     break;
             }
             var lines = FileIO.ReadLinesAsync(file).GetResults();
@@ -204,13 +204,13 @@ namespace MusicMagic {
                 }
                 switch(this.Type){
                     case NoteType.Drum:
-                        file = folder.CreateFileAsync("drum.txt").GetResults();
+                        file = folder.CreateFileAsync("drum.csv").GetResults();
                         break;
                     case NoteType.Guitar:
-                        file = folder.CreateFileAsync("guitar.txt").GetResults();
+                        file = folder.CreateFileAsync("guitar.csv").GetResults();
                         break;
                     case NoteType.Piano:
-                        file = folder.CreateFileAsync("piano.txt").GetResults();
+                        file = folder.CreateFileAsync("piano.csv").GetResults();
                         break;
                 }
                 FileIO.WriteLinesAsync(file, csv);
