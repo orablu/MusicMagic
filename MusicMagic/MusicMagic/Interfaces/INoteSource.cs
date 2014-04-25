@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using SharpDX.XAudio2;
 
 namespace MusicMagic {
-    interface INoteSource : IDisposable {
+    public interface INoteSource : IDisposable {
         XAudio2 Device { get; set; }
         string Path { get; set; }
         WaveFormat Format { get; }

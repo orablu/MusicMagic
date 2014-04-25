@@ -8,7 +8,7 @@ using SharpDX.Multimedia;
 using System.ComponentModel;
 
 namespace MusicMagic {
-    interface INote : IComparable<INote>, INotifyPropertyChanged {
+    public interface INote : IComparable<INote>, INotifyPropertyChanged {
         INoteStream Parent { get; set; }
         int Start { get; set; }
         int Length { get; set; }

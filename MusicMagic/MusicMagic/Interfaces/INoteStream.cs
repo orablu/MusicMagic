@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 
 namespace MusicMagic {
-    enum NoteType { Undefined, Piano, Guitar, Drum, Vocal };
-    interface INoteStream : IEnumerable<INote> {
+    public enum NoteType { Undefined, Piano, Guitar, Drum, Vocal };
+    public interface INoteStream : IEnumerable<INote> {
         NoteType Type { get; set; }
         IEnumerable<INote> Notes { get; set; }
         IList<INoteSource> Sources { get; set; }
