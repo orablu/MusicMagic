@@ -117,17 +117,28 @@ namespace MusicMagic
         }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: Save stuff
-            //stream.saveStream();
-            TextBox saveDlg = new TextBox(); 
-            String test = saveDlg.Text;
             
+            SaveDlg.Opacity = 1;
+            SaveOK.Opacity = 1;
             
+        }
+        private void SaveOK_Click(object sender, RoutedEventArgs e)
+        {
+            stream.saveStream(SaveDlg.Text);
+            SaveDlg.Opacity = 0;
+            SaveOK.Opacity = 0;
         }
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: Load Stuff
-            //stream.loadStream();
+            LoadDlg.Opacity = 1;
+            LoadOK.Opacity = 1;
+            
+        }
+        private void LoadOK_Click(object sender, RoutedEventArgs e)
+        {
+            stream.loadStream(LoadDlg.Text);
+            LoadDlg.Opacity = 0;
+            LoadOK.Opacity = 0;
         }
         private void TapStarted(object sender, RoutedEventArgs e) {
             //Change key color to pressed color

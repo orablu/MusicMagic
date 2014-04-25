@@ -158,12 +158,19 @@ namespace MusicMagic {
 
         }
         //CSV format: piano, startTime, LengthOfNote, Pitch
-        public void loadStream()
+        public void loadStream(string filename)
         {
             var localStorage = Windows.Storage.ApplicationData.Current.LocalFolder;
-            var file = localStorage.GetFileAsync(fileLocation).GetResults();
+            //var file = localStorage.GetFileAsync(fileLocation).GetResults();
+            
+            if (!filename.Contains(".csv"))
+            {
+                filename = filename + ".csv";
+            }
+            
+            var file = localStorage.GetFileAsync(filename).GetAwaiter().GetResult(); //THIS IS THE LINE
             var folder = ApplicationData.Current.LocalFolder;
-            switch (this.Type)
+            /*switch (this.Type)
             {
                 case NoteType.Drum:
                     file = folder.CreateFileAsync("drum.csv").GetResults();
@@ -174,8 +181,8 @@ namespace MusicMagic {
                 case NoteType.Piano:
                     file = folder.CreateFileAsync("piano.csv").GetResults();
                     break;
-            }
-            var lines = FileIO.ReadLinesAsync(file).GetResults();
+            }*/
+            var lines = FileIO.ReadLinesAsync(file).GetAwaiter().GetResult();
             foreach (string line in lines)
             {
                 var words = line.Split(',');
@@ -188,21 +195,26 @@ namespace MusicMagic {
             }
         }
         //CSV format: piano, startTime, LengthOfNote, Pitch
-        public void saveStream()
+        public void saveStream(string filename)
         {
-            string [] csv = new string[4];
+            if (!filename.Contains(".csv"))
+            {
+                filename = filename + ".csv";
+            }
+            List<string> csv = new List<string>();
             var folder = ApplicationData.Current.LocalFolder;
-            var file = folder.CreateFileAsync(fileLocation).GetResults();
-            foreach (KeyValuePair<int, SortedSet<INote>> allNotes in notesInPitch)
+            //var file = folder.CreateFileAsync(fileLocation).GetResults();
+            foreach (var note in Notes)
+            {
+                csv.Add(string.Format("{}, {}, {}", note.Start, note.Length, note.Pitch));
+            }
+            /*foreach (KeyValuePair<int, SortedSet<INote>> allNotes in notesInPitch)
             {
                 foreach (Note note in allNotes.Value) {
-                    csv[0] = Convert.ToString(note.Start) + ", ";
-                    csv[1] = Convert.ToString(note.Length) + ", ";
-                    csv[2] = Convert.ToString(note.Pitch);
-                    csv[3] = Environment.NewLine;
+                    csv.Add(string.Format("{}, {}, {}", note.Start, note.Length, note.Pitch));
                     
                 }
-                switch(this.Type){
+                /*switch(this.Type){
                     case NoteType.Drum:
                         file = folder.CreateFileAsync("drum.csv").GetResults();
                         break;
@@ -212,9 +224,11 @@ namespace MusicMagic {
                     case NoteType.Piano:
                         file = folder.CreateFileAsync("piano.csv").GetResults();
                         break;
-                }
+                }*/ 
+               
+            //} 
+            var file = folder.CreateFileAsync(filename).GetResults();
                 FileIO.WriteLinesAsync(file, csv);
-            }
         }
     }
 }
