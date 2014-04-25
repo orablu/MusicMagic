@@ -19,23 +19,49 @@ using Windows.UI.Xaml.Shapes;
 
 namespace MusicMagic {
     public sealed partial class Track : UserControl {
+        private const    int   WIDTH_OFFSET   = 100;
+        private readonly int[] HEIGHT_OFFSETS = new int[] { 25, 50, 75, 110, 135, 160, 185, 215 };
+
+        private int? _start;
+        public int Start {
+            get {
+                return _start.Value;
+            }
+            set {
+                _start = value;
+                Redraw();
+            }
+        }
+
+        private int? _end;
+        public int End {
+            get {
+                return _end.Value;
+            }
+            set {
+                _end = value;
+                Redraw();
+            }
+        }
+
         public Track() {
             this.InitializeComponent();
         }
-        private const int WIDTH_OFFSET = 100;
-        private readonly int[] HEIGHT_OFFSETS = new int[] { 25, 50, 75, 110, 135, 160, 185, 215 };
-        private readonly string[] NOTE_PATHS = new string[] {
-            @"Resources\piano-a.wav",
-        };
-        // Length, loop start, loop length
-        private readonly int[,] NOTE_INFO = new int[,] {
-            { 1540, 800, 50 },
-        };
 
-        INoteStream stream;
-        Canvas notesBar = new Canvas();
-        private void RedrawNotes()
+        private void ContextChanged(object sender, RoutedEventArgs e) {
+            Redraw();
+        }
+
+        public void Redraw() {
+            if (DataContext != null && _start.HasValue && _end.HasValue) {
+                DrawStaff();
+                DrawNotes();
+            }
+        }
+
+        private void DrawNotes()
         {
+            INoteStream stream = DataContext as INoteStream;
             notesBar.Children.Clear();
             foreach (INote note in stream)
             {
@@ -48,7 +74,14 @@ namespace MusicMagic {
                 newNote.Width = note.Length * 5;
                 newNote.DataContext = note;
             }
+        }
 
+        private void DrawStaff() {
+            l1.Y1 = l1.Y2 =       Staff.ActualHeight / 6.0;
+            l2.Y1 = l2.Y2 = 2.0 * Staff.ActualHeight / 6.0;
+            l3.Y1 = l3.Y2 = 3.0 * Staff.ActualHeight / 6.0;
+            l4.Y1 = l4.Y2 = 4.0 * Staff.ActualHeight / 6.0;
+            l5.Y1 = l5.Y2 = 5.0 * Staff.ActualHeight / 6.0;
         }
     }
     
