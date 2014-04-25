@@ -205,7 +205,7 @@ namespace MusicMagic {
             if (dataStream == null) {
                 setDataStream();
             }
-            var samples = (int)((float)NoteLength * (float)Format.SampleRate / 1000f));
+            var samples = (int)((float)NoteLength * (float)Format.SampleRate / 1000f);
             var buffer = new AudioBuffer {
                 Stream = dataStream,
                 AudioBytes = (int)dataStream.Length,
