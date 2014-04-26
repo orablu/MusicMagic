@@ -32,6 +32,63 @@ namespace MusicMagic
     {
         private readonly int[] SHARPS = new int[] { 1, 3, 6, 8, 10, 13, 15, 18, 20, 22 };
 
+            @"Resources\Piano\low-bf.wav",
+            @"Resources\Piano\low-b.wav",
+            @"Resources\Piano\low-c.wav",
+            @"Resources\Piano\low-c#.wav",
+            @"Resources\Piano\low-d.wav",            
+            @"Resources\Piano\low-ef.wav",
+            @"Resources\Piano\low-e.wav",
+            @"Resources\Piano\low-f.wav",
+            @"Resources\Piano\low-f#.wav", //
+            @"Resources\Piano\low-g.wav", //fix it
+            @"Resources\Piano\low-g#.wav",
+            @"Resources\Piano\another a.wav",
+            @"Resources\Piano\bflat.wav",
+            @"Resources\Piano\another b.wav",
+           // @"Resources\Piano\piano-c.wav",
+
+            
+            
+            
+        };
+
+        // Length, loop start, loop length
+        private const int NOTE_LENGTH = 0;
+        private const int LOOP_BEGIN  = 1;
+        private const int LOOP_LENGTH = 2;
+        private readonly int[,] NOTE_INFO = new int[,] {
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 },
+            { 1540, 0, 0 },
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 },
+            { 1540, 0, 0 },
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 },
+            { 1540, 0, 0 },
+        };
+
+        XAudio2 device;
+        MasteringVoice master;
         INoteStream stream;
 
         int CurrentTime = 0;
