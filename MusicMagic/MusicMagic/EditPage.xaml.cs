@@ -34,10 +34,14 @@ namespace MusicMagic {
 
         private void DrawTracks() {
             Tracks.Children.Clear();
+            int start = (from stream in Streams select stream.EarliestTime).Min();
+            int end = (from stream in Streams select stream.LatestTime).Max();
             foreach (var stream in Streams) {
                 Tracks.Children.Add(new StreamView(stream) {
                     Height = 200,
                     Margin = new Thickness(10),
+                    Start = start,
+                    End = end,
                 });
             }
         }

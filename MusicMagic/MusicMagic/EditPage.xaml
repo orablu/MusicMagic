@@ -30,7 +30,9 @@
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
         </Grid>
 
-        <StackPanel x:Name="Tracks" Grid.Row="1" />
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="Tracks" />
+        </ScrollViewer>
     </Grid>
 
     <Page.BottomAppBar>

@@ -17,6 +17,9 @@ using Windows.UI.Xaml.Navigation;
 
 namespace MusicMagic {
     public sealed partial class StreamView : UserControl {
+        public int Start { get; set; }
+        public int End { get; set; }
+
         public StreamView() {
             this.InitializeComponent();
         }
@@ -28,7 +31,7 @@ namespace MusicMagic {
         private void track_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args) {
             track.Start = ((NoteStream)DataContext).EarliestTime;
             track.End = ((NoteStream)DataContext).LatestTime;
-            track.Redraw();
+            track.Redraw(Start, End);
         }
     }
 }
