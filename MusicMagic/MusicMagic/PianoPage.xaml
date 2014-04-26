@@ -97,7 +97,7 @@
             />
         <!-- Canvas for the bars of music-->
 
-        <local:Track x:Name="PianoTrack" Grid.Row="1" Margin="10" Height="300" Width="1000" />
+        <local:Track x:Name="PianoTrack" Grid.Row="1" Margin="10" Height="200" Width="1000" />
         
         <Canvas Margin="10" Width="1200" HorizontalAlignment="Center" Grid.Row="2" >
 

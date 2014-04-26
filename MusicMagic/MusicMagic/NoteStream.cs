@@ -41,12 +41,18 @@ namespace MusicMagic {
 
         public int EarliestTime {
             get {
+                if (Notes.ToArray().Length == 0) {
+                    return 0;
+                }
                 return (from note in Notes select note.Start).Min();
             }
         }
 
         public int LatestTime {
             get {
+                if (Notes.ToArray().Length == 0) {
+                    return 0;
+                }
                 return (from note in Notes select note.Start + note.Length).Max();
             }
         }
