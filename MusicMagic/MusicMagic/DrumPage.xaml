@@ -15,6 +15,26 @@
         <x:String x:Key="AppName">Drum</x:String>
     </Page.Resources>
 
+    <!--App bar for play/record-->
+    <Page.BottomAppBar>
+        <AppBar>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal">
+                    <!--Add buttons here, need custom icons-->
+                    <AppBarButton x:Name="Play" Label="Play" Icon="Play" Click="PlayButton_Click"/>
+                    <AppBarButton x:Name="Record" Label="Record" Icon="Audio" Click="RecordButton_Click"/>
+                    <AppBarButton x:Name="Stop" Label="Stop" Icon="Stop" Click="StopButton_Click"/>
+                    <AppBarButton x:Name="Save" Label="Save" Icon="Save" Click="SaveButton_Click"/>
+                    <AppBarButton x:Name="Load" Label="Load" Icon="Upload" Click="LoadButton_Click"/>
+                </StackPanel>
+            </Grid>
+        </AppBar>
+    </Page.BottomAppBar>
+    
     <!--
         This grid acts as a root panel for the page that defines two rows:
         * Row 0 contains the back button and page title
@@ -37,7 +57,7 @@
                 <ColumnDefinition Width="120"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
+            <Button x:Name="backButton" Margin="39,59,39,0" Click="GoBack_Click"
                         Style="{StaticResource NavigationBackButtonNormalStyle}"
                         VerticalAlignment="Top"
                         AutomationProperties.Name="Back"
@@ -46,6 +66,39 @@
             <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="473,0,30,40"/>
         </Grid>
+        <!--Save dialog-->
+        <TextBox
+            Visibility="Collapsed"
+            Text="Choose a name for your file" Margin="162,34,929,70"
+            FontSize="20"
+            AcceptsReturn="False"
+            x:Name="SaveDlg"
+            />
+        <Button
+            Visibility="Collapsed"
+            Background="Gray" Margin="249,72,0,31" Height="37" Width="88"
+            Content="OK"
+            Click="SaveOK_Click"
+            x:Name="SaveOK"
+            />
+
+
+
+        <TextBox
+            Text="Type the name of your file" Margin="814,34,277,70"
+            FontSize="20"
+            AcceptsReturn="False"
+            Visibility="Collapsed"
+            x:Name="LoadDlg"
+            />
+        <Button
+            Background="Gray" Margin="907,72,0,31" Height="37" Width="88"
+            Content="OK"
+            Click="LoadOK_Click"
+            x:Name="LoadOK"
+            Visibility="Collapsed"
+            />
+
         <!-- Canvas for the bars of music-->
         <Viewbox Stretch="Fill" StretchDirection="Both" Height="200" Margin="10,0,10,428" Grid.Row="1" x:Name="viewbox">
             <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollMode="Enabled"
@@ -96,6 +149,7 @@
             	Fill="BurlyWood" Canvas.Left="271" Canvas.Top="205"
             	Stroke="Gray"
                 DataContext="0"
+
             />
             <Ellipse
                 Height="150"
@@ -103,6 +157,8 @@
                 Fill="Beige" Canvas.Left="271" Canvas.Top="188"
                 Stroke="Gray"
                 DataContext="0"
+                PointerPressed="TapStarted"
+                PointerReleased="TapRelease"
             />
             <Ellipse
             	Height="150"
@@ -110,6 +166,7 @@
             	Fill="BurlyWood" Canvas.Left="779" Canvas.Top="205"
             	Stroke="Gray"
                 DataContext="3"
+
             />
             <Ellipse
             	Height="150"
@@ -117,6 +174,8 @@
             	Fill="Beige" Canvas.Left="779" Canvas.Top="188"
                 Stroke="Gray"
                 DataContext="3"
+                PointerPressed="TapStarted"
+                PointerReleased="TapRelease"
             />
             <Ellipse
             	Height="150"
@@ -124,6 +183,7 @@
             	Fill="BurlyWood" Canvas.Left="421" Canvas.Top="55"
             	Stroke="Gray"
                 DataContext="1"
+
             />
             <Ellipse
             	Height="150"
@@ -131,6 +191,8 @@
             	Fill="Beige" Canvas.Left="421" Canvas.Top="38"
                 Stroke="Gray"
                 DataContext="1"
+                PointerPressed="TapStarted"
+                PointerReleased="TapRelease"
             />
             <Ellipse
             	Height="150"
@@ -145,6 +207,8 @@
             	Fill="Beige" Canvas.Left="629" Canvas.Top="38"
                 Stroke="Gray"
                 DataContext="2"
+                PointerPressed="TapStarted"
+                PointerReleased="TapRelease"
             />
             <Ellipse
             	Height="93"
@@ -152,6 +216,8 @@
             	Fill="Gold" Canvas.Left="887" Canvas.Top="48"
                 Stroke="Gray"
                 DataContext="4"
+                PointerPressed="TapStarted"
+                PointerReleased="TapRelease"
             />
             <Ellipse
             	Height="93"
@@ -159,6 +225,8 @@
             	Fill="Gold" Canvas.Left="887" Canvas.Top="25"
                 Stroke="Gray"
                 DataContext="4"
+                PointerPressed="TapStarted"
+                PointerReleased="TapRelease"
             />
 
 

@@ -144,7 +144,7 @@ namespace MusicMagic
             var key = (Line)sender;
             var pitch = Convert.ToInt32(key.DataContext);
             //Change key color to default color
-            key.Fill = new SolidColorBrush(SHARPS.Contains(pitch) ? Colors.Black : Colors.WhiteSmoke);
+            key.Fill = new SolidColorBrush(Colors.DimGray);
             stream.StopPitch(pitch);
             //if (isRecording) {
             // Create the new note
