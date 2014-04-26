@@ -31,75 +31,7 @@ namespace MusicMagic
     public sealed partial class PianoPage : Page
     {
         private readonly int[] SHARPS = new int[] { 1, 3, 6, 8, 10, 13, 15, 18, 20, 22 };
-        private readonly string[] NOTE_PATHS = new string[] {
-            @"Resources\Piano\lower-c.wav",
-            @"Resources\Piano\lower-c#.wav",
-            @"Resources\Piano\lower-d.wav",
-            @"Resources\Piano\lower-ef.wav",
-            @"Resources\Piano\lower-e.wav",
-            @"Resources\Piano\lower-f.wav",//
-            @"Resources\Piano\lower-f#.wav",
-            @"Resources\Piano\lower-g.wav", //
-            @"Resources\Piano\lower-g#.wav",//
-            @"Resources\Piano\low-a.wav", 
 
-            @"Resources\Piano\low-bf.wav",
-            @"Resources\Piano\low-b.wav",
-            @"Resources\Piano\low-c.wav",
-            @"Resources\Piano\low-c#.wav",
-            @"Resources\Piano\low-d.wav",
-            @"Resources\Piano\low-e.wav",
-            @"Resources\Piano\low-ef.wav",
-            @"Resources\Piano\low-f.wav",
-            @"Resources\Piano\low-f#.wav", //
-            @"Resources\Piano\low-g.wav", //fix it
-            @"Resources\Piano\low-g#.wav",
-            @"Resources\Piano\piano-a.wav",
-            @"Resources\Piano\bflat.wav",
-            @"Resources\Piano\piano-b.wav",
-           // @"Resources\Piano\piano-c.wav",
-
-            
-            
-            
-        };
-
-        // Length, loop start, loop length
-        private const int NOTE_LENGTH = 0;
-        private const int LOOP_BEGIN  = 1;
-        private const int LOOP_LENGTH = 2;
-        private readonly int[,] NOTE_INFO = new int[,] {
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 },
-            { 1540, 0, 0 },
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 },
-            { 1540, 0, 0 },
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 },
-            { 1540, 0, 0 },
-        };
-
-        XAudio2 device;
-        MasteringVoice master;
         INoteStream stream;
 
         int CurrentTime = 0;
@@ -109,15 +41,13 @@ namespace MusicMagic
         Canvas notesBar = new Canvas();
 
         public void Initialize() {
-            device = new XAudio2();
-            master = new MasteringVoice(device);
-            var sources = getSources();
+            //var sources = getSources();
             // Add sources.
-            //stream = ((App)Application.Current).CurrentNoteStream;
-            stream = new NoteStream() {
-                Sources = sources,
-                Type = NoteType.Piano,
-            };
+            stream = ((App)Application.Current).CurrentNoteStream;
+            //stream = new NoteStream() {
+            //    Sources = sources,
+            //    Type = NoteType.Piano,
+            //};
             PianoTrack.DataContext = stream;
             timer.Tick += timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 0, 0, 1);
@@ -211,7 +141,7 @@ namespace MusicMagic
             //if (isRecording) {
                 // Create the new note
                 var note = new Note() {
-                    Device = device,
+                    Device = ((App)Application.Current).Device,
                     Parent = stream,
                     Pitch = pitch,
                     Start = StartTime, //Get saved start time
@@ -222,19 +152,6 @@ namespace MusicMagic
            // }
         }
 
-        private List<INoteSource> getSources() {
-            List<INoteSource> sources = new List<INoteSource>();
-            for (int i = 0; i < NOTE_PATHS.Length; i++) {
-                sources.Add(new NoteSource() {
-                    Device     = device,
-                    Path       = NOTE_PATHS[i],
-                    NoteLength = NOTE_INFO[i, NOTE_LENGTH],
-                    LoopBegin  = NOTE_INFO[i, LOOP_BEGIN],
-                    LoopLength = NOTE_INFO[i, LOOP_LENGTH],
-                });
-            }
-            return sources;
-        }
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
@@ -318,6 +235,8 @@ namespace MusicMagic
             Initialize();
         }
 
-
+        private void backButton_Click(object sender, RoutedEventArgs e) {
+            this.Frame.GoBack();
+        }
     }
 }

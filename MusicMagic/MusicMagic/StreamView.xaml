@@ -10,15 +10,16 @@
     d:DesignWidth="400">
     
     <Grid>
+    <Border BorderThickness="1" BorderBrush="Black">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Column="0" Margin="20" Text="{Binding Path=Type}">None</TextBlock>
-        <local:Track x:Name="track" Grid.Column="1"
-                     Start="{Binding Path=EarliestTime, Mode=OneTime}"
-                     End="{Binding Path=LatestTime, Mode=OneTime}"
-                     DataContextChanged="track_DataContextChanged" />
+        <local:Track x:Name="track" Grid.Column="1" DataContextChanged="track_DataContextChanged" />
+    </Grid>
+    </Border>
     </Grid>
 </UserControl>

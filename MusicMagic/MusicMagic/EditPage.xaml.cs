@@ -29,27 +29,31 @@ namespace MusicMagic {
 
         public EditPage() {
             this.InitializeComponent();
+            DrawTracks();
         }
 
         private void DrawTracks() {
             Tracks.Children.Clear();
             foreach (var stream in Streams) {
-                Tracks.Children.Add(new StreamView(stream));
+                Tracks.Children.Add(new StreamView(stream) {
+                    Height = 200,
+                    Margin = new Thickness(10),
+                });
             }
         }
 
         private void New_Piano_Click(object sender, RoutedEventArgs e) {
-            var newstream = new NoteStream {
-                Type = NoteType.Piano,
-            };
-
-            Streams.Add(newstream);
-            ((App)Application.Current).CurrentNoteStream = newstream;
+            ((App)Application.Current).NewPiano();
             this.Frame.Navigate(typeof(PianoPage));
         }
 
         private void New_Guitar_Click(object sender, RoutedEventArgs e) {
+            ((App)Application.Current).NewGuitar();
+            this.Frame.Navigate(typeof(GuitarPage));
+        }
 
+        private void backButton_Click(object sender, RoutedEventArgs e) {
+            this.Frame.GoBack();
         }
     }
 }

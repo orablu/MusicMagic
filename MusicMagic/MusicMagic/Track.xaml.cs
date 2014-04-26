@@ -59,7 +59,7 @@ namespace MusicMagic {
             notesBar.Children.Clear();
             var brush = new SolidColorBrush(Colors.White);
             var border = new SolidColorBrush(Colors.Black);
-            foreach (INote note in stream)
+            foreach (INote note in stream.NotesInRange(Start, End))
             {
                 var newNote = new Rectangle();
                 newNote.Fill = brush;

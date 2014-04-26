@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SharpDX.XAudio2;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,8 +23,11 @@ namespace MusicMagic
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
-    sealed partial class App : Application
-    {
+    sealed partial class App : Application {
+        public XAudio2 Device;
+        MasteringVoice master;
+        List<INoteSource> pianoSources, guitarSources;
+
         public INoteStream CurrentNoteStream {
             get;
             set;
@@ -43,6 +47,30 @@ namespace MusicMagic
             this.InitializeComponent();
             this.Suspending += OnSuspending;
             this.Streams = new List<INoteStream>();
+            Device = new XAudio2();
+            master = new MasteringVoice(Device);
+            pianoSources = getPianoSources();
+            guitarSources = getGuitarSources();
+        }
+
+        public void NewPiano() {
+            var newstream = new NoteStream {
+                Type = NoteType.Piano,
+                Sources = pianoSources,
+            };
+
+            Streams.Add(newstream);
+            CurrentNoteStream = newstream;
+        }
+
+        public void NewGuitar() {
+            var newstream = new NoteStream {
+                Type = NoteType.Guitar,
+                Sources = guitarSources,
+            };
+
+            Streams.Add(newstream);
+            CurrentNoteStream = newstream;
         }
 
         /// <summary>
@@ -116,5 +144,101 @@ namespace MusicMagic
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+        private List<INoteSource> getPianoSources() {
+            List<INoteSource> sources = new List<INoteSource>();
+            for (int i = 0; i < PIANO_PATHS.Length; i++) {
+                sources.Add(new NoteSource() {
+                    Device     = Device,
+                    Path       = PIANO_PATHS[i],
+                    NoteLength = PIANO_INFO[i, NOTE_LENGTH],
+                    LoopBegin  = PIANO_INFO[i, LOOP_BEGIN],
+                    LoopLength = PIANO_INFO[i, LOOP_LENGTH],
+                });
+            }
+            return sources;
+        }
+        
+        private List<INoteSource> getGuitarSources() {
+            List<INoteSource> sources = new List<INoteSource>();
+            for (int i = 0; i < GUITAR_PATHS.Length; i++) {
+                sources.Add(new NoteSource() {
+                    Device     = Device,
+                    Path       = GUITAR_PATHS[i],
+                    NoteLength = GUITAR_INFO[i, NOTE_LENGTH],
+                    LoopBegin  = GUITAR_INFO[i, LOOP_BEGIN],
+                    LoopLength = GUITAR_INFO[i, LOOP_LENGTH],
+                });
+            }
+            return sources;
+        }
+
+        private readonly string[] PIANO_PATHS = new string[] {
+            @"Resources\Piano\lower-c.wav",
+            @"Resources\Piano\lower-c#.wav",
+            @"Resources\Piano\lower-d.wav",
+            @"Resources\Piano\lower-ef.wav",
+            @"Resources\Piano\lower-e.wav",
+            @"Resources\Piano\lower-f.wav",//
+            @"Resources\Piano\lower-f#.wav",
+            @"Resources\Piano\lower-g.wav", //
+            @"Resources\Piano\lower-g#.wav",//
+            @"Resources\Piano\low-a.wav", 
+
+            @"Resources\Piano\low-bf.wav",
+            @"Resources\Piano\low-b.wav",
+            @"Resources\Piano\low-c.wav",
+            @"Resources\Piano\low-c#.wav",
+            @"Resources\Piano\low-d.wav",
+            @"Resources\Piano\low-e.wav",
+            @"Resources\Piano\low-ef.wav",
+            @"Resources\Piano\low-f.wav",
+            @"Resources\Piano\low-f#.wav", //
+            @"Resources\Piano\low-g.wav", //fix it
+            @"Resources\Piano\low-g#.wav",
+            @"Resources\Piano\piano-a.wav",
+            @"Resources\Piano\bflat.wav",
+            @"Resources\Piano\piano-b.wav",
+           // @"Resources\Piano\piano-c.wav",
+        };
+
+        // Length, loop start, loop length
+        private const int NOTE_LENGTH = 0;
+        private const int LOOP_BEGIN  = 1;
+        private const int LOOP_LENGTH = 2;
+        private readonly int[,] PIANO_INFO = new int[,] {
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 },
+            { 1540, 0, 0 },
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 },
+            { 1540, 0, 0 },
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 },
+            { 1540, 0, 0 },
+        };
+
+        private readonly string[] GUITAR_PATHS = new string[] {
+        };
+
+        private readonly int[,] GUITAR_INFO = new int[,] {
+        };
     }
 }
