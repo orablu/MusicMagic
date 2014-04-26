@@ -28,11 +28,7 @@ namespace MusicMagic {
                 return _start.Value;
             }
             set {
-                var val = _start.HasValue;
                 _start = value;
-                if (!val) {
-                    Redraw();
-                }
             }
         }
 
@@ -42,20 +38,12 @@ namespace MusicMagic {
                 return _end.Value;
             }
             set {
-                var val = _end.HasValue;
                 _end = value;
-                if (!val) {
-                    Redraw();
-                }
             }
         }
 
         public Track() {
             this.InitializeComponent();
-        }
-
-        private void UserControl_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args) {
-            Redraw();
         }
 
         public void Redraw() {
@@ -69,15 +57,20 @@ namespace MusicMagic {
         {
             INoteStream stream = DataContext as INoteStream;
             notesBar.Children.Clear();
+            var brush = new SolidColorBrush(Colors.White);
+            var border = new SolidColorBrush(Colors.Black);
             foreach (INote note in stream)
             {
-                Ellipse newNote = new Ellipse();
-                newNote.Fill = new SolidColorBrush(Colors.White);
-                Canvas.SetLeft(newNote, note.Start * WIDTH_OFFSET);
-                Canvas.SetTop(newNote, HEIGHT_OFFSETS[note.Pitch]);
+                var newNote = new Rectangle();
+                newNote.Fill = brush;
+                newNote.Stroke = border;
+                newNote.RadiusX = 2;
+                newNote.RadiusY = 2;
+                Canvas.SetLeft(newNote, (float)(note.Start - Start) / (float)(End - Start) * ActualWidth);
+                Canvas.SetTop(newNote, ActualHeight * (1f - (float)(note.Pitch + 1) / 23f));
                 Canvas.SetZIndex(newNote, 20);
-                newNote.Height = 25;
-                newNote.Width = note.Length * 5;
+                newNote.Height = ActualHeight / 25f;
+                newNote.Width = (float)note.Length / (float)(End - Start) * ActualWidth;
                 newNote.DataContext = note;
                 notesBar.Children.Add(newNote);
             }
