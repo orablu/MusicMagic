@@ -108,11 +108,6 @@ namespace MusicMagic
             this.Frame.Navigate(typeof(PianoPage));
         }
 
-        private void NewDrum_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(DrumPage));
-        }
-
         private void NewGuitar_Tapped(object sender, TappedRoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(GuitarPage));

@@ -30,9 +30,6 @@ namespace MusicMagic
     /// </summary>
     public sealed partial class GuitarPage : Page
     {
-        
-
-
         XAudio2 device;
         MasteringVoice master;
         INoteStream stream;
@@ -47,14 +44,8 @@ namespace MusicMagic
         {
             device = new XAudio2();
             master = new MasteringVoice(device);
-            var sources = getSources();
             // Add sources.
-            //stream = ((App)Application.Current).CurrentNoteStream;
-            stream = new NoteStream()
-            {
-                Sources = sources,
-                Type = NoteType.Guitar,
-            };
+            stream = ((App)Application.Current).CurrentNoteStream;
             GuitarTrack.DataContext = stream;
             timer.Tick += timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 0, 0, 1);
@@ -164,22 +155,6 @@ namespace MusicMagic
         private void GoBack_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(EditPage));
-        }
-        private List<INoteSource> getSources()
-        {
-            List<INoteSource> sources = new List<INoteSource>();
-            for (int i = 0; i < NOTE_PATHS.Length; i++)
-            {
-                sources.Add(new NoteSource()
-                {
-                    Device = device,
-                    Path = NOTE_PATHS[i],
-                    NoteLength = NOTE_INFO[i, NOTE_LENGTH],
-                    LoopBegin = NOTE_INFO[i, LOOP_BEGIN],
-                    LoopLength = NOTE_INFO[i, LOOP_LENGTH],
-                });
-            }
-            return sources;
         }
 
         private NavigationHelper navigationHelper;
