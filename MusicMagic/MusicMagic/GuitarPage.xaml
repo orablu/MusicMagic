@@ -103,9 +103,9 @@
             />
 
         <!-- Canvas for the bars of music-->
+        <local:Track x:Name="PianoTrack" Margin="162,114,204,354" Height="300" Width="1000" Grid.RowSpan="2" />
 
-
-        <Canvas Margin="43,240,29,45" Background="BurlyWood"  Grid.Row="1">
+        <Canvas Margin="43,259,29,51" Background="BurlyWood"  Grid.Row="1">
             <!--Strings-->
             <Line
                 X1="0" X2="300"
