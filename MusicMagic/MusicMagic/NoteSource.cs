@@ -129,9 +129,6 @@ namespace MusicMagic {
                 Stream = dataStream,
                 AudioBytes = (int)dataStream.Length,
                 Flags = BufferFlags.EndOfStream,
-                LoopBegin = LoopBegin,
-                LoopLength = LoopLength,
-                LoopCount = getLoopCount(length),
                 PlayBegin = 0,
                 PlayLength = Math.Min(samples, maxsamples),
             };
