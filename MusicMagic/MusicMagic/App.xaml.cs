@@ -189,15 +189,15 @@ namespace MusicMagic
             @"Resources\Piano\low-c.wav",
             @"Resources\Piano\low-c#.wav",
             @"Resources\Piano\low-d.wav",
-            @"Resources\Piano\low-e.wav",
             @"Resources\Piano\low-ef.wav",
+            @"Resources\Piano\low-e.wav",
             @"Resources\Piano\low-f.wav",
             @"Resources\Piano\low-f#.wav", //
             @"Resources\Piano\low-g.wav", //fix it
             @"Resources\Piano\low-g#.wav",
-            @"Resources\Piano\piano-a.wav",
+            @"Resources\Piano\another a.wav",
             @"Resources\Piano\bflat.wav",
-            @"Resources\Piano\piano-b.wav",
+            @"Resources\Piano\another b.wav",
            // @"Resources\Piano\piano-c.wav",
         };
 
@@ -236,9 +236,75 @@ namespace MusicMagic
         };
 
         private readonly string[] GUITAR_PATHS = new string[] {
+            @"Resources\Guitar\Guitar_E_highest.wav",
+            @"Resources\Guitar\Guitar_F_highest.wav",
+            @"Resources\Guitar\Guitar_F#_highest.wav",
+            @"Resources\Guitar\Guitar_G_highest.wav",
+            @"Resources\Guitar\Guitar_G#_highest.wav",
+            //@"Resources\Guitar\Guitar_A_highest.wav",
+            
+            @"Resources\Guitar\Guitar_B_highest.wav",
+            @"Resources\Guitar\Guitar_C_highest.wav",
+            @"Resources\Guitar\Guitar_C#_highest.wav",
+            @"Resources\Guitar\Guitar_D_highest.wav",
+            @"Resources\Guitar\Guitar_Eb_highest.wav",
+
+            @"Resources\Guitar\Guitar_G_high.wav",
+            @"Resources\Guitar\Guitar_G#_high.wav",
+            @"Resources\Guitar\Guitar_A_high.wav",
+            @"Resources\Guitar\Guitar_Bb_high.wav",
+            @"Resources\Guitar\Guitar_B_high.wav",
+
+            @"Resources\Guitar\Guitar_D_high.wav",
+            @"Resources\Guitar\Guitar_Eb_high.wav",
+            @"Resources\Guitar\Guitar_E_high.wav",
+            @"Resources\Guitar\Guitar_F_high.wav",
+            @"Resources\Guitar\Guitar_F#_high.wav",
+
+            @"Resources\Guitar\Guitar_A_med.wav",
+            @"Resources\Guitar\Guitar_Bb_med.wav",
+            @"Resources\Guitar\Guitar_B_med.wav",
+            @"Resources\Guitar\Guitar_C_med.wav",
+            @"Resources\Guitar\Guitar_C#_med.wav",
+
+            @"Resources\Guitar\Guitar_E_low.wav",
+            @"Resources\Guitar\Guitar_F_low.wav",
+            @"Resources\Guitar\Guitar_F#_low.wav",
+            @"Resources\Guitar\Guitar_G_low.wav",
+            @"Resources\Guitar\Guitar_G#_low.wav",
         };
 
         private readonly int[,] GUITAR_INFO = new int[,] {
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 },
+            { 1540, 0, 0 },
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 },
+            { 1540, 0, 0 },
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 },
+            { 1540, 0, 0 },
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 },
+            { 1540, 0, 0 },
         };
     }
 }
