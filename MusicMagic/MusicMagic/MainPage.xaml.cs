@@ -32,11 +32,12 @@ namespace MusicMagic
         }
 
         private void NewGuitar_Clicked(object sender, RoutedEventArgs e) {
+            ((App)Application.Current).NewGuitar();
             this.Frame.Navigate(typeof(GuitarPage));
         }
 
-        private void NewPiano_Clicked(object sender, RoutedEventArgs e)
-        {
+        private void NewPiano_Clicked(object sender, RoutedEventArgs e) {
+            ((App)Application.Current).NewPiano();
             this.Frame.Navigate(typeof(PianoPage));
         }
     }

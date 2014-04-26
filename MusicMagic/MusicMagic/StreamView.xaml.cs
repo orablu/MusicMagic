@@ -26,6 +26,8 @@ namespace MusicMagic {
         }
 
         private void track_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args) {
+            track.Start = ((NoteStream)DataContext).EarliestTime;
+            track.End = ((NoteStream)DataContext).LatestTime;
             track.Redraw();
         }
     }
