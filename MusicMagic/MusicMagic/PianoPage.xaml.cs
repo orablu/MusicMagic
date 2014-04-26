@@ -47,16 +47,16 @@ namespace MusicMagic
             @"Resources\Piano\low-b.wav",
             @"Resources\Piano\low-c.wav",
             @"Resources\Piano\low-c#.wav",
-            @"Resources\Piano\low-d.wav",
-            @"Resources\Piano\low-e.wav",
+            @"Resources\Piano\low-d.wav",            
             @"Resources\Piano\low-ef.wav",
+            @"Resources\Piano\low-e.wav",
             @"Resources\Piano\low-f.wav",
             @"Resources\Piano\low-f#.wav", //
             @"Resources\Piano\low-g.wav", //fix it
             @"Resources\Piano\low-g#.wav",
-            @"Resources\Piano\piano-a.wav",
+            @"Resources\Piano\another a.wav",
             @"Resources\Piano\bflat.wav",
-            @"Resources\Piano\piano-b.wav",
+            @"Resources\Piano\another b.wav",
            // @"Resources\Piano\piano-c.wav",
 
             
