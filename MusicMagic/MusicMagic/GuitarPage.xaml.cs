@@ -4,9 +4,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Windows;
+using System.Threading;
+using System.Threading.Tasks;
+using Windows.System.Threading;
+using Windows.Storage.Pickers;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -14,6 +18,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Xaml.Shapes;
+using SharpDX.XAudio2;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
@@ -25,8 +31,153 @@ namespace MusicMagic
     public sealed partial class GuitarPage : Page
     {
 
-        public void Redraw(){
+        XAudio2 device;
+        MasteringVoice master;
+        INoteStream stream;
 
+        int CurrentTime = 0;
+        int StartTime = 0;
+        bool isRecording = false;
+        DispatcherTimer timer = new DispatcherTimer();
+        Canvas notesBar = new Canvas();
+
+        public void Initialize()
+        {
+            device = new XAudio2();
+            master = new MasteringVoice(device);
+            var sources = getSources();
+            // Add sources.
+            //stream = ((App)Application.Current).CurrentNoteStream;
+            stream = new NoteStream()
+            {
+                Sources = sources,
+                Type = NoteType.Guitar,
+            };
+            GuitarTrack.DataContext = stream;
+            timer.Tick += timer_Tick;
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 1);
+            notesBar.Width = 1000;
+            notesBar.Height = 300;
+            timer.Start();
+        }
+
+
+        //Given two lists, or however we want to store the notes value, draw the notes.
+        //FLAGGED NOT WORKING AS INTENDED
+        private void RedrawNotes()
+        {
+            // TODO: Change these to center over current time.
+            GuitarTrack.Start = 0;
+            GuitarTrack.End = 1000;
+            GuitarTrack.Redraw();
+        }
+
+        //run on charms bar's play button click
+        private void PlayButton_Click(object sender, RoutedEventArgs e)
+        {
+            stream.Play();
+        }
+
+        //run on Charms bar's record button click
+        private void RecordButton_Click(object sender, RoutedEventArgs e)
+        {
+            isRecording = true;
+            //timer.Start();
+        }
+
+        //run after each second has passed while recording
+        void timer_Tick(object sender, object e)
+        {
+            CurrentTime++;
+        }
+
+        //Run on Charms bar's stop button click
+        private void StopButton_Click(object sender, RoutedEventArgs e)
+        {
+            isRecording = false;
+            timer.Stop();
+            CurrentTime = 0;
+        }
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            SaveDlg.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            SaveOK.Visibility = Windows.UI.Xaml.Visibility.Visible;
+
+        }
+        private void SaveOK_Click(object sender, RoutedEventArgs e)
+        {
+            stream.saveStream(SaveDlg.Text);
+            SaveDlg.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            SaveOK.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+        }
+        private void LoadButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoadDlg.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            LoadOK.Visibility = Windows.UI.Xaml.Visibility.Visible;
+
+        }
+        private void LoadOK_Click(object sender, RoutedEventArgs e)
+        {
+            stream.loadStream(LoadDlg.Text);
+            LoadDlg.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            LoadOK.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+        }
+        private void TapStarted(object sender, RoutedEventArgs e)
+        {
+            //Change key color to pressed color
+            var key = (Line)sender;
+            key.Fill = new SolidColorBrush(Colors.LightYellow);
+
+            // Play tone
+            var pitch = Convert.ToInt32(key.DataContext);
+            stream.PlayPitch(pitch);
+
+            // if(isRecording){
+            StartTime = CurrentTime;
+            //}
+        }
+
+        private void TapRelease(object sender, RoutedEventArgs e)
+        {
+            var key = (Line)sender;
+            var pitch = Convert.ToInt32(key.DataContext);
+            //Change key color to default color
+            key.Fill = new SolidColorBrush(SHARPS.Contains(pitch) ? Colors.Black : Colors.WhiteSmoke);
+            stream.StopPitch(pitch);
+            //if (isRecording) {
+            // Create the new note
+            var note = new Note()
+            {
+                Device = device,
+                Parent = stream,
+                Pitch = pitch,
+                Start = StartTime, //Get saved start time
+                Length = CurrentTime - StartTime,//calculate length
+            };
+            stream.UpdateNote(note);
+            RedrawNotes();
+            // }
+        }
+
+        private void GoBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(EditPage));
+        }
+        private List<INoteSource> getSources()
+        {
+            List<INoteSource> sources = new List<INoteSource>();
+            for (int i = 0; i < NOTE_PATHS.Length; i++)
+            {
+                sources.Add(new NoteSource()
+                {
+                    Device = device,
+                    Path = NOTE_PATHS[i],
+                    NoteLength = NOTE_INFO[i, NOTE_LENGTH],
+                    LoopBegin = NOTE_INFO[i, LOOP_BEGIN],
+                    LoopLength = NOTE_INFO[i, LOOP_LENGTH],
+                });
+            }
+            return sources;
         }
 
         private NavigationHelper navigationHelper;
