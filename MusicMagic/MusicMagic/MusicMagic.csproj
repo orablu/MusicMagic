@@ -215,33 +215,53 @@
     <Content Include="Resources\Guitar\Guitar_G_low.wma" />
     <Content Include="Resources\Guitar\Guitar_G_lowest.wma" />
     <Content Include="Resources\Guitar\Guitar_G_med.wma" />
-    <Content Include="Resources\piano-a.wav">
+    <Content Include="Resources\Piano\bflat.wav" />
+    <Content Include="Resources\Piano\low-a.wav" />
+    <Content Include="Resources\Piano\low-b.wav" />
+    <Content Include="Resources\Piano\low-bf.wav" />
+    <Content Include="Resources\Piano\low-c#.wav" />
+    <Content Include="Resources\Piano\low-c.wav" />
+    <Content Include="Resources\Piano\low-d.wav" />
+    <Content Include="Resources\Piano\low-e.wav" />
+    <Content Include="Resources\Piano\low-ef.wav" />
+    <Content Include="Resources\Piano\low-f#.wav" />
+    <Content Include="Resources\Piano\low-f.wav" />
+    <Content Include="Resources\Piano\low-g#.wav" />
+    <Content Include="Resources\Piano\low-g.wav" />
+    <Content Include="Resources\Piano\lower-c#.wav" />
+    <Content Include="Resources\Piano\lower-c.wav" />
+    <Content Include="Resources\Piano\lower-d.wav" />
+    <Content Include="Resources\Piano\lower-e.wav" />
+    <Content Include="Resources\Piano\lower-ef.wav" />
+    <Content Include="Resources\Piano\lower-f#.wav" />
+    <Content Include="Resources\Piano\lower-f.wav" />
+    <Content Include="Resources\Piano\lower-g#.wav" />
+    <Content Include="Resources\Piano\lower-g.wav" />
+    <Content Include="Resources\Piano\piano-a.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\piano-b.wav">
+    <Content Include="Resources\Piano\piano-b.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\piano-bflat.wav">
+    <Content Include="Resources\Piano\piano-c.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\piano-c.wav">
+    <Content Include="Resources\Piano\piano-d.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\piano-d.wav">
+    <Content Include="Resources\Piano\piano-e.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\piano-e.wav">
+    <Content Include="Resources\Piano\piano-eflat.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\piano-eflat.wav">
+    <Content Include="Resources\Piano\piano-f.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\piano-f.wav">
+    <Content Include="Resources\Piano\piano-g.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\piano-g.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Resources\Piano\piano-low-g.wav" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
