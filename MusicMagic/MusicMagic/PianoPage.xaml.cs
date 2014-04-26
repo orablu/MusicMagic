@@ -74,6 +74,7 @@ namespace MusicMagic
             master = new MasteringVoice(device);
             var sources = getSources();
             // Add sources.
+            //stream = ((App)Application.Current).CurrentNoteStream;
             stream = new NoteStream() {
                 Sources = sources,
                 Type = NoteType.Piano,
@@ -103,21 +104,19 @@ namespace MusicMagic
             stream.Play();
         }
 
-
-
         //run on Charms bar's record button click
         private void RecordButton_Click(object sender, RoutedEventArgs e)
         {
             isRecording = true;
             //timer.Start();
-           
-
         }
+
         //run after each second has passed while recording
         void timer_Tick(object sender, object e)
         {
             CurrentTime++;
         }
+
         //Run on Charms bar's stop button click
         private void StopButton_Click(object sender, RoutedEventArgs e)
         {

@@ -20,8 +20,36 @@ namespace MusicMagic {
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class EditPage : Page {
+
+        public List<INoteStream> Streams {
+            get {
+                return ((App)Application.Current).Streams;
+            }
+        }
+
         public EditPage() {
             this.InitializeComponent();
+        }
+
+        private void DrawTracks() {
+            Tracks.Children.Clear();
+            foreach (var stream in Streams) {
+                Tracks.Children.Add(new StreamView(stream));
+            }
+        }
+
+        private void New_Piano_Click(object sender, RoutedEventArgs e) {
+            var newstream = new NoteStream {
+                Type = NoteType.Piano,
+            };
+
+            Streams.Add(newstream);
+            ((App)Application.Current).CurrentNoteStream = newstream;
+            this.Frame.Navigate(typeof(PianoPage));
+        }
+
+        private void New_Guitar_Click(object sender, RoutedEventArgs e) {
+
         }
     }
 }
