@@ -215,6 +215,7 @@
     <Content Include="Resources\Guitar\Guitar_G_low.wma" />
     <Content Include="Resources\Guitar\Guitar_G_lowest.wma" />
     <Content Include="Resources\Guitar\Guitar_G_med.wma" />
+    <Content Include="Resources\musicmagiclogo.png" />
     <Content Include="Resources\Piano\another a.wav" />
     <Content Include="Resources\Piano\another b.wav" />
     <Content Include="Resources\Piano\bflat.wav" />
