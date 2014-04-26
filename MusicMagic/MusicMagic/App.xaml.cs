@@ -206,37 +206,37 @@ namespace MusicMagic
         private const int LOOP_BEGIN  = 1;
         private const int LOOP_LENGTH = 2;
         private readonly int[,] PIANO_INFO = new int[,] {
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 },
-            { 1540, 0, 0 },
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 },
-            { 1540, 0, 0 },
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 }, 
-            { 1540, 0, 0 },
-            { 1540, 0, 0 },
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
+            { 1540, 500, 80 }, 
         };
 
         private readonly string[] GUITAR_PATHS = new string[] {
-            @"Resources\Guitar\Guitar_E_highest.wav",
+           /* @"Resources\Guitar\Guitar_E_highest.wav",
             @"Resources\Guitar\Guitar_F_highest.wav",
             @"Resources\Guitar\Guitar_F#_highest.wav",
             @"Resources\Guitar\Guitar_G_highest.wav",
@@ -271,11 +271,11 @@ namespace MusicMagic
             @"Resources\Guitar\Guitar_F_low.wav",
             @"Resources\Guitar\Guitar_F#_low.wav",
             @"Resources\Guitar\Guitar_G_low.wav",
-            @"Resources\Guitar\Guitar_G#_low.wav",
+            @"Resources\Guitar\Guitar_G#_low.wav",*/
         };
 
         private readonly int[,] GUITAR_INFO = new int[,] {
-            { 1540, 0, 0 }, 
+           /* { 1540, 0, 0 }, 
             { 1540, 0, 0 },
             { 1540, 0, 0 },
             { 1540, 0, 0 }, 
@@ -304,7 +304,7 @@ namespace MusicMagic
             { 1540, 0, 0 }, 
             { 1540, 0, 0 }, 
             { 1540, 0, 0 },
-            { 1540, 0, 0 },
+            { 1540, 0, 0 },*/
         };
     }
 }
