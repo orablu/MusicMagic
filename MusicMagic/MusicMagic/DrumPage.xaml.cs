@@ -1,4 +1,4 @@
-﻿using MusicMagic.Common;
+﻿/**using MusicMagic.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -57,7 +57,6 @@ namespace MusicMagic
             timer.Interval = new TimeSpan(0, 0, 0, 0, 1);
             notesBar.Width = 1000;
             notesBar.Height = 300;
-            timer.Start();
         }
 
 
@@ -81,7 +80,7 @@ namespace MusicMagic
         private void RecordButton_Click(object sender, RoutedEventArgs e)
         {
             isRecording = true;
-            //timer.Start();
+            timer.Start();
         }
 
         //run after each second has passed while recording
@@ -131,9 +130,9 @@ namespace MusicMagic
             var pitch = Convert.ToInt32(key.DataContext);
             stream.PlayPitch(pitch);
 
-            // if(isRecording){
+            if(isRecording){
             StartTime = CurrentTime;
-            //}
+            }
         }
 
         private void TapRelease(object sender, RoutedEventArgs e)
@@ -143,7 +142,7 @@ namespace MusicMagic
             //Change key color to default color
             key.Fill = new SolidColorBrush(pitch==4 ? Colors.Gold : Colors.Beige);
             stream.StopPitch(pitch);
-            //if (isRecording) {
+            if (isRecording) {
             // Create the new note
             var note = new Note()
             {
@@ -155,7 +154,7 @@ namespace MusicMagic
             };
             stream.UpdateNote(note);
             RedrawNotes();
-            // }
+            }
         }
 
         private void GoBack_Click(object sender, RoutedEventArgs e)
