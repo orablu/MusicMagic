@@ -8,6 +8,27 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
+        <StackPanel x:Name="Tracks" Grid.Row="0" />
     </Grid>
+
+    <Page.BottomAppBar>
+        <AppBar>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal">
+                    <!--Add buttons here, need custom icons-->
+                    <AppBarButton Label="New Piano" Icon="Add" Click="New_Piano_Click"/>
+                    <AppBarButton Label="New Guitar" Icon="Add" Click="New_Guitar_Click"/>
+                    <!--<AppBarButton Label="New Drums" Icon="Add" Click="New_Click"/>-->
+                </StackPanel>
+            </Grid>
+        </AppBar>
+    </Page.BottomAppBar>
 </Page>

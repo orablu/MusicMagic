@@ -30,8 +30,7 @@ namespace MusicMagic
     /// </summary>
     public sealed partial class PianoPage : Page
     {
-        private const int WIDTH_OFFSET = 100;
-        private readonly int[] HEIGHT_OFFSETS = new int[] { 25, 50, 75, 110, 135, 160, 185, 215 };
+        private readonly int[] SHARPS = new int[] { 1, 3, 6, 8, 10, 13, 15, 18, 20, 22 };
         private readonly string[] NOTE_PATHS = new string[] {
             @"Resources\Piano\lower-c.wav",
             @"Resources\Piano\lower-c#.wav",
@@ -114,6 +113,7 @@ namespace MusicMagic
             master = new MasteringVoice(device);
             var sources = getSources();
             // Add sources.
+            //stream = ((App)Application.Current).CurrentNoteStream;
             stream = new NoteStream() {
                 Sources = sources,
                 Type = NoteType.Piano,
@@ -143,21 +143,19 @@ namespace MusicMagic
             stream.Play();
         }
 
-
-
         //run on Charms bar's record button click
         private void RecordButton_Click(object sender, RoutedEventArgs e)
         {
             isRecording = true;
             //timer.Start();
-           
-
         }
+
         //run after each second has passed while recording
         void timer_Tick(object sender, object e)
         {
             CurrentTime++;
         }
+
         //Run on Charms bar's stop button click
         private void StopButton_Click(object sender, RoutedEventArgs e)
         {
@@ -208,7 +206,7 @@ namespace MusicMagic
             var key = (Rectangle)sender;
             var pitch = Convert.ToInt32(key.DataContext);
             //Change key color to default color
-            key.Fill = new SolidColorBrush(Colors.WhiteSmoke);
+            key.Fill = new SolidColorBrush(SHARPS.Contains(pitch) ? Colors.Black : Colors.WhiteSmoke);
             stream.StopPitch(pitch);
             //if (isRecording) {
                 // Create the new note
