@@ -94,41 +94,214 @@
         <Canvas Margin="43,240,29,45" Background="BurlyWood"  Grid.Row="1">
             <!--Strings-->
             <Line
-                X1="0" X2="1300"
+                X1="0" X2="300"
                 Y1="50" Y2="50"
                 StrokeThickness="6"
                 Stroke="DimGray"
+                DataContext="0"
             />
             <Line
-                X1="0" X2="1300"
+                X1="300" X2="550"
+                Y1="50" Y2="50"
+                StrokeThickness="6"
+                Stroke="DimGray"
+                DataContext="1"
+            />
+            <Line
+                X1="550" X2="800"
+                Y1="50" Y2="50"
+                StrokeThickness="6"
+                Stroke="DimGray"
+                DataContext="2"
+            />
+            <Line
+                X1="800" X2="1050"
+                Y1="50" Y2="50"
+                StrokeThickness="6"
+                Stroke="DimGray"
+                DataContext="3"            
+            />
+            <Line
+                X1="1050" X2="1300"
+                Y1="50" Y2="50"
+                StrokeThickness="6"
+                Stroke="DimGray"
+                DataContext="4"
+            />
+            <Line
+                X1="0" X2="300"
                 Y1="100" Y2="100"
                 StrokeThickness="6"
                 Stroke="DimGray"
+                DataContext="5"
             />
             <Line
-                X1="0" X2="1300"
+                X1="300" X2="550"
+                Y1="100" Y2="100"
+                StrokeThickness="6"
+                Stroke="DimGray"
+                DataContext="6"
+            />
+            <Line
+                X1="550" X2="800"
+                Y1="100" Y2="100"
+                StrokeThickness="6"
+                Stroke="DimGray"
+                DataContext="7"
+            />
+            <Line
+                X1="800" X2="1050"
+                Y1="100" Y2="100"
+                StrokeThickness="6"
+                Stroke="DimGray"
+                DataContext="8"
+            />
+            <Line
+                X1="1050" X2="1300"
+                Y1="100" Y2="100"
+                StrokeThickness="6"
+                Stroke="DimGray"
+                DataContext="9"
+            />
+            <Line
+                X1="0" X2="300"
                 Y1="150" Y2="150"
                 StrokeThickness="6"
                 Stroke="DimGray"
+                DataContext="10"
             />
             <Line
-                X1="0" X2="1300"
+                X1="300" X2="550"
+                Y1="150" Y2="150"
+                StrokeThickness="6"
+                Stroke="DimGray"
+                DataContext="11"
+            />
+            <Line
+                X1="550" X2="800"
+                Y1="150" Y2="150"
+                StrokeThickness="6"
+                Stroke="DimGray"
+                DataContext="12"
+            />
+            <Line
+                X1="800" X2="1050"
+                Y1="150" Y2="150"
+                StrokeThickness="6"
+                Stroke="DimGray"
+                DataContext="13"
+            />
+            <Line
+                X1="1050" X2="1300"
+                Y1="150" Y2="150"
+                StrokeThickness="6"
+                Stroke="DimGray"
+                DataContext="14"
+            />
+            <Line
+                X1="0" X2="300"
                 Y1="200" Y2="200"
                 StrokeThickness="6"
                 Stroke="DimGray"
+                DataContext="15"
             />
             <Line
-                X1="0" X2="1300"
+                X1="300" X2="550"
+                Y1="200" Y2="200"
+                StrokeThickness="6"
+                Stroke="DimGray"
+                DataContext="16"
+            />
+            <Line
+                X1="550" X2="800"
+                Y1="200" Y2="200"
+                StrokeThickness="6"
+                Stroke="DimGray"
+                DataContext="17"
+            />
+            <Line
+                X1="800" X2="1050"
+                Y1="200" Y2="200"
+                StrokeThickness="6"
+                Stroke="DimGray"
+                DataContext="18"
+            />
+            <Line
+                X1="1050" X2="1300"
+                Y1="200" Y2="200"
+                StrokeThickness="6"
+                Stroke="DimGray"
+                DataContext="19"
+            />
+            <Line
+                X1="0" X2="300"
                 Y1="250" Y2="250"
-                StrokeThickness="8"
+                StrokeThickness="6"
                 Stroke="DimGray"
+                DataContext="20"
             />
             <Line
-                X1="0" X2="1300"
-                Y1="300" Y2="300"
-                StrokeThickness="8"
+                X1="300" X2="550"
+                Y1="250" Y2="250"
+                StrokeThickness="6"
                 Stroke="DimGray"
-                
+                DataContext="21"
+            />
+            <Line
+                X1="550" X2="800"
+                Y1="250" Y2="250"
+                StrokeThickness="6"
+                Stroke="DimGray"
+                DataContext="22"
+            />
+            <Line
+                X1="800" X2="1050"
+                Y1="250" Y2="250"
+                StrokeThickness="6"
+                Stroke="DimGray"
+                DataContext="23"
+            />
+            <Line
+                X1="1050" X2="1300"
+                Y1="250" Y2="250"
+                StrokeThickness="6"
+                Stroke="DimGray"
+                DataContext="24"
+            />
+            <Line
+                X1="0" X2="300"
+                Y1="300" Y2="300"
+                StrokeThickness="6"
+                Stroke="DimGray"
+                DataContext="25"
+            />
+            <Line
+                X1="300" X2="550"
+                Y1="300" Y2="300"
+                StrokeThickness="6"
+                Stroke="DimGray"
+                DataContext="26"
+            />
+            <Line
+                X1="550" X2="800"
+                Y1="300" Y2="300"
+                StrokeThickness="6"
+                Stroke="DimGray"
+                DataContext="27"
+            />
+            <Line
+                X1="800" X2="1050"
+                Y1="300" Y2="300"
+                StrokeThickness="6"
+                Stroke="DimGray"
+                DataContext="28"
+            />
+            <Line
+                X1="1050" X2="1300"
+                Y1="300" Y2="300"
+                StrokeThickness="6"
+                Stroke="DimGray"
+                DataContext="29"
             />
             <!--Fret Bars-->
             <Line
