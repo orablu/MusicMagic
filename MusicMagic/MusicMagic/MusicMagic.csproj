@@ -153,7 +153,6 @@
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
     <Content Include="Common\ReadMe.txt" />
-    <Content Include="Resources\Guitar\Guitar_A_high.wma" />
     <Content Include="Resources\Guitar\Guitar_A_highest.wma" />
     <Content Include="Resources\Guitar\Guitar_A_low.wma" />
     <Content Include="Resources\Guitar\Guitar_A_lowest.wma" />
