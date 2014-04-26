@@ -33,15 +33,36 @@ namespace MusicMagic
         private const int WIDTH_OFFSET = 100;
         private readonly int[] HEIGHT_OFFSETS = new int[] { 25, 50, 75, 110, 135, 160, 185, 215 };
         private readonly string[] NOTE_PATHS = new string[] {
-            @"Resources\piano-c.wav",
-            @"Resources\piano-d.wav",
-            @"Resources\piano-eflat.wav",
-            @"Resources\piano-e.wav",
-            @"Resources\piano-f.wav",   
-            @"Resources\piano-g.wav",
-            @"Resources\piano-a.wav",
-            @"Resources\piano-b.wav",
-            @"Resources\piano-bflat.wav",
+            @"Resources\Piano\lower-c.wav",
+            @"Resources\Piano\lower-c#.wav",
+            @"Resources\Piano\lower-d.wav",
+            @"Resources\Piano\lower-ef.wav",
+            @"Resources\Piano\lower-e.wav",
+            @"Resources\Piano\lower-f.wav",//
+            @"Resources\Piano\lower-f#.wav",
+            @"Resources\Piano\lower-g.wav", //
+            @"Resources\Piano\lower-g#.wav",//
+            @"Resources\Piano\low-a.wav", 
+
+            @"Resources\Piano\low-bf.wav",
+            @"Resources\Piano\low-b.wav",
+            @"Resources\Piano\low-c.wav",
+            @"Resources\Piano\low-c#.wav",
+            @"Resources\Piano\low-d.wav",
+            @"Resources\Piano\low-e.wav",
+            @"Resources\Piano\low-ef.wav",
+            @"Resources\Piano\low-f.wav",
+            @"Resources\Piano\low-f#.wav", //
+            @"Resources\Piano\low-g.wav", //fix it
+            @"Resources\Piano\low-g#.wav",
+            @"Resources\Piano\piano-a.wav",
+            @"Resources\Piano\bflat.wav",
+            @"Resources\Piano\piano-b.wav",
+           // @"Resources\Piano\piano-c.wav",
+
+            
+            
+            
         };
 
         // Length, loop start, loop length
@@ -49,6 +70,24 @@ namespace MusicMagic
         private const int LOOP_BEGIN  = 1;
         private const int LOOP_LENGTH = 2;
         private readonly int[,] NOTE_INFO = new int[,] {
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 },
+            { 1540, 0, 0 },
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 },
+            { 1540, 0, 0 },
             { 1540, 0, 0 }, 
             { 1540, 0, 0 }, 
             { 1540, 0, 0 }, 
