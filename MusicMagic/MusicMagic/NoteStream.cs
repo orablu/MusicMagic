@@ -140,6 +140,10 @@ namespace MusicMagic {
             var iterator = notes.GetEnumerator();
 
             // Play the first note.
+            if (!iterator.MoveNext()) {
+                return;
+            }
+
             var current = iterator.Current;
             bool hasNext = iterator.MoveNext();
             var next = iterator.Current;

@@ -59,5 +59,11 @@ namespace MusicMagic {
         private void backButton_Click(object sender, RoutedEventArgs e) {
             this.Frame.GoBack();
         }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e) {
+            foreach (var stream in Streams) {
+                stream.Play();
+            }
+        }
     }
 }

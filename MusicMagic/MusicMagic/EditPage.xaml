@@ -30,6 +30,8 @@
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
         </Grid>
 
+        <AppBarButton Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Label="Play Tracks" Icon="Play" Click="AppBarButton_Click"/>
+
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="Tracks" />
         </ScrollViewer>
