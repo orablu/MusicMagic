@@ -33,7 +33,15 @@ namespace MusicMagic
         private const int WIDTH_OFFSET = 100;
         private readonly int[] HEIGHT_OFFSETS = new int[] { 25, 50, 75, 110, 135, 160, 185, 215 };
         private readonly string[] NOTE_PATHS = new string[] {
-            @"Resources\piano-c.wav",@"Resources\piano-d.wav",@"Resources\piano-eflat.wav",@"Resources\piano-e.wav",@"Resources\piano-f.wav",@"Resources\piano-g.wav",@"Resources\piano-a.wav",@"Resources\piano-b.wav",@"Resources\piano-bflat.wav",
+            @"Resources\piano-c.wav",
+            @"Resources\piano-d.wav",
+            @"Resources\piano-eflat.wav",
+            @"Resources\piano-e.wav",
+            @"Resources\piano-f.wav",   
+            @"Resources\piano-g.wav",
+            @"Resources\piano-a.wav",
+            @"Resources\piano-b.wav",
+            @"Resources\piano-bflat.wav",
         };
 
         // Length, loop start, loop length
@@ -41,6 +49,14 @@ namespace MusicMagic
         private const int LOOP_BEGIN  = 1;
         private const int LOOP_LENGTH = 2;
         private readonly int[,] NOTE_INFO = new int[,] {
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 },
             { 1540, 0, 0 },
         };
 
