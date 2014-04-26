@@ -24,6 +24,86 @@ namespace MusicMagic
     /// </summary>
     public sealed partial class GuitarPage : Page
     {
+        private readonly string[] NOTE_PATHS = new string[] {
+            @"Resources\Guitar\Guitar_E_highest.wav",
+            @"Resources\Guitar\Guitar_F_highest.wav",
+            @"Resources\Guitar\Guitar_F#_highest.wav",
+            @"Resources\Guitar\Guitar_G_highest.wav",
+            @"Resources\Guitar\Guitar_G#_highest.wav",
+            @"Resources\Guitar\Guitar_A_highest.wav",
+            
+            @"Resources\Guitar\Guitar_B_highest.wav",
+            @"Resources\Guitar\Guitar_C_highest.wav",
+            @"Resources\Guitar\Guitar_C#_highest.wav",
+            @"Resources\Guitar\Guitar_D_highest.wav",
+            @"Resources\Guitar\Guitar_Eb_highest.wav",
+
+            @"Resources\Guitar\Guitar_G_highest.wav",
+            @"Resources\Piano\lower-c#.wav",
+            @"Resources\Piano\lower-d.wav",
+            @"Resources\Piano\lower-ef.wav",
+            @"Resources\Piano\lower-e.wav",
+            @"Resources\Piano\lower-f.wav",//
+            @"Resources\Piano\lower-f#.wav",
+            @"Resources\Piano\lower-g.wav", //
+            @"Resources\Piano\lower-g#.wav",//
+            @"Resources\Piano\low-a.wav", 
+
+            @"Resources\Piano\low-bf.wav",
+            @"Resources\Piano\low-b.wav",
+            @"Resources\Piano\low-c.wav",
+            @"Resources\Piano\low-c#.wav",
+            @"Resources\Piano\low-d.wav",            
+            @"Resources\Piano\low-ef.wav",
+            @"Resources\Piano\low-e.wav",
+            @"Resources\Piano\low-f.wav",
+            @"Resources\Piano\low-f#.wav", //
+            @"Resources\Piano\low-g.wav", //fix it
+            @"Resources\Piano\low-g#.wav",
+            @"Resources\Piano\another a.wav",
+            @"Resources\Piano\bflat.wav",
+            @"Resources\Piano\another b.wav",
+           // @"Resources\Piano\piano-c.wav",
+
+            
+            
+            
+        };
+
+        // Length, loop start, loop length
+        private const int NOTE_LENGTH = 0;
+        private const int LOOP_BEGIN = 1;
+        private const int LOOP_LENGTH = 2;
+        private readonly int[,] NOTE_INFO = new int[,] {
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 },
+            { 1540, 0, 0 },
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 },
+            { 1540, 0, 0 },
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 }, 
+            { 1540, 0, 0 },
+            { 1540, 0, 0 },
+        };
+
 
         public void Redraw(){
 
