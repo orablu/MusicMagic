@@ -30,8 +30,7 @@ namespace MusicMagic
     /// </summary>
     public sealed partial class PianoPage : Page
     {
-        private const int WIDTH_OFFSET = 100;
-        private readonly int[] HEIGHT_OFFSETS = new int[] { 25, 50, 75, 110, 135, 160, 185, 215 };
+        private readonly int[] SHARPS = new int[] { 1, 3, 6, 8, 10, 13, 15, 18, 20, 22 };
         private readonly string[] NOTE_PATHS = new string[] {
             @"Resources\piano-c.wav",@"Resources\piano-d.wav",@"Resources\piano-eflat.wav",@"Resources\piano-e.wav",@"Resources\piano-f.wav",@"Resources\piano-g.wav",@"Resources\piano-a.wav",@"Resources\piano-b.wav",@"Resources\piano-bflat.wav",
         };
@@ -153,7 +152,7 @@ namespace MusicMagic
             var key = (Rectangle)sender;
             var pitch = Convert.ToInt32(key.DataContext);
             //Change key color to default color
-            key.Fill = new SolidColorBrush(Colors.WhiteSmoke);
+            key.Fill = new SolidColorBrush(SHARPS.Contains(pitch) ? Colors.Black : Colors.WhiteSmoke);
             stream.StopPitch(pitch);
             //if (isRecording) {
                 // Create the new note
