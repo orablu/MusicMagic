@@ -27,12 +27,17 @@ namespace MusicMagic
             this.InitializeComponent();
         }
 
+        private void EditTracks_Clicked(object sender, RoutedEventArgs e) {
+            this.Frame.Navigate(typeof(EditPage));
+        }
 
+        private void NewGuitar_Clicked(object sender, RoutedEventArgs e) {
+            this.Frame.Navigate(typeof(GuitarPage));
+        }
 
-        private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
+        private void NewPiano_Clicked(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(PianoPage));
         }
-
     }
 }

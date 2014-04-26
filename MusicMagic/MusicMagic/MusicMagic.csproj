@@ -137,6 +137,9 @@
       <DependentUpon>PianoPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StreamView.xaml.cs">
+      <DependentUpon>StreamView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Track.xaml.cs">
       <DependentUpon>Track.xaml</DependentUpon>
     </Compile>
@@ -270,6 +273,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PianoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StreamView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
