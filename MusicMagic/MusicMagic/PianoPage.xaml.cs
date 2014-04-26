@@ -222,6 +222,10 @@ namespace MusicMagic
            // }
         }
 
+        private void GoBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(EditPage));
+        }
         private List<INoteSource> getSources() {
             List<INoteSource> sources = new List<INoteSource>();
             for (int i = 0; i < NOTE_PATHS.Length; i++) {
